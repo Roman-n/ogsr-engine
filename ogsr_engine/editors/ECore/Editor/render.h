@@ -135,10 +135,11 @@ public:
 		void*							ppErrorMsgs,
 		void*							ppConstantTable);
 		
-	u32						active_phase				()	{return 0;};
-	BOOL					is_sun						()	{return false;};
-	void							set_thermovision_data		(Fvector* w_timers, Fvector4* w_states) {};
-	BOOL					is_required_lens_dirt		()	{return false;};
+// KD: need to know, what R2 phase is active now
+	virtual u32						active_phase			();
+	virtual void					set_thermovision_data(Fvector* w_timers, Fvector4* w_states);
+	virtual BOOL					is_sun();
+	virtual BOOL					is_required_lens_dirt();
 };
 
 IC  float   CalcSSA(Fvector& C, float R)

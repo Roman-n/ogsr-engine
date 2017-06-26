@@ -6,8 +6,7 @@
 //	Description : Properties list helper script export
 ////////////////////////////////////////////////////////////////////////////
 
-#include "stdafx.h"
-#include "script_space.h"
+#include "pch_script.h"
 #include "script_properties_list_helper.h"
 #include "ai_space.h"
 #include "script_engine.h"

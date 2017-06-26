@@ -1,12 +1,14 @@
 #pragma once
-
+/*
 #ifdef XRGAME_EXPORTS
 #	include "ui/xrUIXmlParser.h"
 #else // XRGAME_EXPORTS
-#	include "xrUIXmlParser.h"
+#	include "ui/xrUIXmlParser.h"
 #	include "object_broker.h"
 #endif // XRGAME_EXPORTS
-
+*/
+#	include "ui/xrUIXmlParser.h"
+#	include "object_broker.h"
 
 //T_ID    - уникальный текстовый идентификатор (аттрибут id в XML файле)
 //T_INDEX - уникальный числовой индекс 
@@ -24,7 +26,26 @@ struct ITEM_DATA
 };
 typedef xr_vector<ITEM_DATA>	T_VECTOR;
 
-void _destroy_item_data_vector_cont(T_VECTOR* vec);
+IC void _destroy_item_data_vector_cont(T_VECTOR* vec)
+{
+	T_VECTOR::iterator it = vec->begin();
+	T_VECTOR::iterator it_e = vec->end();
+
+	xr_vector<CUIXml*>			_tmp;
+	for (; it != it_e; ++it)
+	{
+		xr_vector<CUIXml*>::iterator it_f = std::find(_tmp.begin(), _tmp.end(), (*it)._xml);
+		if (it_f == _tmp.end())
+			//.		{
+			_tmp.push_back((*it)._xml);
+		//.			Msg("%s is unique",(*it)._xml->m_xml_file_name);
+		//.		}else
+		//.			Msg("%s already in list",(*it)._xml->m_xml_file_name);
+
+	}
+	//.	Log("_tmp.size()",_tmp.size());
+	delete_data(_tmp);
+}
 
 #define TEMPLATE_SPECIALIZATION template<typename T_INIT>
 #define CSXML_IdToIndex CXML_IdToIndex<T_INIT>

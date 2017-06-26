@@ -7,24 +7,30 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+#ifndef XRSE_FACTORY_EXPORTS
 #include "game_graph.h"
 #include "game_level_cross_table.h"
 #include "level_graph.h"
 #include "graph_engine.h"
 #include "ef_storage.h"
+#endif
 #include "ai_space.h"
+#ifndef XRSE_FACTORY_EXPORTS
 #include "cover_manager.h"
 #include "cover_point.h"
+#endif
 #include "script_engine.h"
+#ifndef XRSE_FACTORY_EXPORTS
 #include "patrol_path_storage.h"
 #include "alife_simulator.h"
 
 ENGINE_API	bool g_dedicated_server;
-
+#endif
 CAI_Space *g_ai_space = 0;
 
 CAI_Space::CAI_Space				()
 {
+#ifndef XRSE_FACTORY_EXPORTS
 	m_ef_storage			= 0;
 	m_game_graph			= 0;
 	m_graph_engine			= 0;
@@ -35,11 +41,13 @@ CAI_Space::CAI_Space				()
 #endif // PRIQUEL
 	m_alife_simulator		= 0;
 	m_patrol_path_storage	= 0;
+#endif
 	m_script_engine			= 0;
 }
 
 void CAI_Space::init				()
 {
+#ifndef XRSE_FACTORY_EXPORTS
 	if (g_dedicated_server)
 		return;
 
@@ -62,17 +70,19 @@ void CAI_Space::init				()
 
 	VERIFY					(!m_patrol_path_storage);
 	m_patrol_path_storage	= xr_new<CPatrolPathStorage>();
-
+#endif
 	VERIFY					(!m_script_engine);
 	m_script_engine			= xr_new<CScriptEngine>();
 	script_engine().init	();
-
+#ifndef XRSE_FACTORY_EXPORTS
 	extern string4096		g_ca_stdout;
 	setvbuf					(stderr,g_ca_stdout,_IOFBF,sizeof(g_ca_stdout));
+#endif
 }
 
 CAI_Space::~CAI_Space				()
 {
+#ifndef XRSE_FACTORY_EXPORTS
 	unload					();
 	
 	xr_delete				(m_patrol_path_storage);
@@ -83,17 +93,18 @@ CAI_Space::~CAI_Space				()
 #else // PRIQUEL
 	xr_delete				(m_game_graph);
 #endif // PRIQUEL
-	
+#endif
 	try {
 		xr_delete			(m_script_engine);
 	}
 	catch(...) {
 	}
-
+#ifndef XRSE_FACTORY_EXPORTS
 	xr_delete				(m_cover_manager);
 	xr_delete				(m_graph_engine);
+#endif
 }
-
+#ifndef XRSE_FACTORY_EXPORTS
 void CAI_Space::load				(LPCSTR level_name)
 {
 #ifdef PRIQUEL
@@ -256,3 +267,4 @@ const CGameLevelCrossTable *CAI_Space::get_cross_table	() const
 	return					(&game_graph().cross_table());
 }
 #endif // PRIQUEL
+#endif

@@ -2,11 +2,11 @@
 #pragma hdrstop
 
 #include "cpuid.h"
-#include <intrin.h>
 
 //#ifdef _M_AMD64
 
 #ifndef M_BORLAND
+#include <intrin.h>
 
 int _cpuid (_processor_info *pinfo)
 {

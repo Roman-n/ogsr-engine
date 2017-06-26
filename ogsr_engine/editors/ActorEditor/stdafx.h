@@ -1,8 +1,8 @@
 //----------------------------------------------------
 // file: stdafx.h
 //----------------------------------------------------
-#ifndef stdafxAEH
-#define stdafxAEH
+#ifndef stdafxH
+#define stdafxH
 
 #pragma once
 
@@ -23,7 +23,6 @@
 #define         RENDER  R_R1
 
 // Std C++ headers
-
 #include <fastmath.h>
 #include <io.h>
 #include <fcntl.h>

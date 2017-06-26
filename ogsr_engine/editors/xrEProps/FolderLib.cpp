@@ -87,7 +87,7 @@ TElTreeItem* CFolderHelper::FindItemInFolder(EItemType type, TElTree* tv, TElTre
         for (TElTreeItem* node=start_folder->GetFirstChild(); node; node=start_folder->GetNextChild(node))
             if (type==((EItemType)(node->Data))&&(node->Text==name)) return node;
     }else{
-		for (TElTreeItem* node=tv->Items->GetFirstNode(); node; node=node->GetNextSibling())
+        for (TElTreeItem* node=tv->Items->GetFirstNode(); node; node=node->GetNextSibling())
             if (type==((EItemType)(node->Data))&&(node->Text==name)) return node;
     }
     return 0;
@@ -274,7 +274,7 @@ AnsiString CFolderHelper::ReplacePart(AnsiString old_name, AnsiString ren_part, 
 //---------------------------------------------------------------------------
 // Drag'n'Drop
 //---------------------------------------------------------------------------
-void __fastcall CFolderHelper::DragDrop(TObject *Sender, TObject* Source, int X, int Y, TOnItemRename after_drag)
+void CFolderHelper::DragDrop(TObject *Sender, TObject* Source, int X, int Y, TOnItemRename after_drag)
 {
 	R_ASSERT(after_drag);
 
@@ -352,7 +352,7 @@ void __fastcall CFolderHelper::DragDrop(TObject *Sender, TObject* Source, int X,
  }
 //---------------------------------------------------------------------------
 
-void __fastcall CFolderHelper::DragOver(TObject *Sender, TObject *Source, int X, int Y, TDragState State, bool &Accept)
+void CFolderHelper::DragOver(TObject *Sender, TObject *Source, int X, int Y, TDragState State, bool &Accept)
 {
 	TElTree* tv = dynamic_cast<TElTree*>(Sender); VERIFY(Sender);
 	TElTreeItem* tgt;
@@ -387,7 +387,7 @@ void __fastcall CFolderHelper::DragOver(TObject *Sender, TObject *Source, int X,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall CFolderHelper::StartDrag(TObject *Sender, TDragObject *&DragObject)
+void CFolderHelper::StartDrag(TObject *Sender, TDragObject *&DragObject)
 {
 	TElTree* tv = dynamic_cast<TElTree*>(Sender); VERIFY(Sender);
 	drag_items.clear		();
@@ -412,7 +412,7 @@ bool CFolderHelper::RenameItem(TElTree* tv, TElTreeItem* node, AnsiString& new_t
     new_text = new_text.LowerCase();
 
     // find item with some name
-	for (TElTreeItem* item=node->GetFirstSibling(); item; item=item->GetNextSibling()){
+    for (TElTreeItem* item=node->GetFirstSibling(); item; item=item->GetNextSibling()){
         if ((item->Text==new_text)&&(item!=node))
             return false;
     }

@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #pragma once
-
+#ifndef XRSE_FACTORY_EXPORTS
 class CGameGraph;
 class CGameLevelCrossTable;
 class CLevelGraph;
@@ -15,18 +15,22 @@ class CGraphEngine;
 class CEF_Storage;
 class CALifeSimulator;
 class CCoverManager;
-class CScriptEngine;
 class CPatrolPathStorage;
+#endif
+class CScriptEngine;
 
 class CAI_Space {
 private:
+#ifndef XRSE_FACTORY_EXPORTS
 	friend class CALifeSimulator;
 	friend class CALifeGraphRegistry;
 	friend class CALifeSpawnRegistry;
 	friend class CALifeSpawnRegistry;
 	friend class CLevel;
+#endif
 
 private:
+#ifndef XRSE_FACTORY_EXPORTS
 	CGameGraph							*m_game_graph;
 #ifndef PRIQUEL
 	CGameLevelCrossTable				*m_cross_table;
@@ -36,7 +40,9 @@ private:
 	CEF_Storage							*m_ef_storage;
 	CALifeSimulator						*m_alife_simulator;
 	CCoverManager						*m_cover_manager;
+#endif
 	CScriptEngine						*m_script_engine;
+#ifndef XRSE_FACTORY_EXPORTS
 	CPatrolPathStorage					*m_patrol_path_storage;
 
 private:
@@ -50,11 +56,12 @@ private:
 private:
 			void						game_graph				(CGameGraph *game_graph);
 #endif // PRIQUEL
-
+#endif
 public:
 										CAI_Space				();
 	virtual								~CAI_Space				();
 			void						init					();
+#ifndef XRSE_FACTORY_EXPORTS
 	IC		CGameGraph					&game_graph				() const;
 	IC		CGameGraph					*get_game_graph			() const;
 	IC		CLevelGraph					&level_graph			() const;
@@ -73,10 +80,12 @@ public:
 	IC		const CALifeSimulator		&alife					() const;
 	IC		const CALifeSimulator		*get_alife				() const;
 	IC		const CCoverManager			&cover_manager			() const;
+#endif
 	IC		CScriptEngine				&script_engine			() const;
-
+#ifndef XRSE_FACTORY_EXPORTS
 #ifdef DEBUG
 			void						validate				(const u32			level_id) const;
+#endif
 #endif
 };
 

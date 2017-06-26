@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "script_space.h"
+#include "pch_script.h"
 
 class CSE_Abstract;
 

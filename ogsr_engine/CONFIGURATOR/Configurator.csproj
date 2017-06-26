@@ -39,7 +39,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>X:\ogsr_engine\_BIN\Configurator\Debug\Win32\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -49,7 +49,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>X:\ogsr_engine\_BIN\Configurator\Release\Win32\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -216,8 +216,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>if Release == $(ConfigurationName) (
+xcopy "$(TargetPath)" "X:\ogsr_package\READY\" /y/i
+xcopy "$(TargetDir)$(TargetName).exe.config" "X:\ogsr_package\READY\" /y/i 
+xcopy "$(TargetDir)\en-US\$(TargetName).resources.dll" "X:\ogsr_package\READY\localization\en-US" /y/i
+xcopy "$(TargetDir)\fr-FR\$(TargetName).resources.dll" "X:\ogsr_package\READY\localization\fr-FR" /y/i
+xcopy "$(TargetDir)\ru-RU\$(TargetName).resources.dll" "X:\ogsr_package\READY\localization\ru-RU" /y/i)
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

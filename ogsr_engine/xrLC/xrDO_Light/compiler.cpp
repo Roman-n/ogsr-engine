@@ -3,11 +3,11 @@
 #include "shader_xrlc.h"
 #include "communicate.h"
 #include "xrThread.h"
-#include "detailformat.h"
+#include "xrRender\DetailFormat.h"
 #include "xrhemisphere.h"
 #include "cl_intersect.h"
 #include "Etextureparams.h"
-#include "r_light.h"
+#include "..\r_light.h"
 #include "global_options.h"
 
 #define NUM_THREADS		3

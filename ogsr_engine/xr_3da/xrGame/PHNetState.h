@@ -38,6 +38,8 @@ template<typename src>
 
 DEFINE_VECTOR(SPHNetState,PHNETSTATE_VECTOR,PHNETSTATE_I);
 
+#include		"..\vismask.h"
+
 struct SPHBonesData 
 {
 	VisMask			  bones_mask;

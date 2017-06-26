@@ -224,4 +224,8 @@ void					CRender::reset_end				()
 {
 	Target			=	xr_new<CRenderTarget>			();
 }
-
+// KD: need to know, what R2 phase is active now
+u32	 CRender::active_phase			() {return 0;};
+void CRender::set_thermovision_data(Fvector* w_timers, Fvector4* w_states) {};
+BOOL CRender::is_sun() {return FALSE;};
+BOOL CRender::is_required_lens_dirt() {return FALSE;};

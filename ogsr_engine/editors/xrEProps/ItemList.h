@@ -123,7 +123,7 @@ public:		// User declarations
     void 				HideList				();
     void 				RefreshForm				();
 
-    void   				DeselectAll				();
+    void 				DeselectAll				();
     virtual void 		SelectItem				(LPCSTR full_name, bool bVal, bool bLeaveSel, bool bExpand);
     virtual void 		AssignItems				(ListItemsVec& values, bool full_expand, bool full_sort=false);
     bool 				IsFocused				(){return tvItems->Focused();}
@@ -166,7 +166,7 @@ public:		// User declarations
     virtual void 		OnCreate				(LPCSTR title, TWinControl* parent, TAlign align, u32 flags);
     virtual void 		OnDestroy				();
 
-	virtual void 		ClearList				();
+    virtual void 		ClearList				();
 
 	virtual void 		GenerateObjectName		(shared_str& name, LPCSTR start_node, LPCSTR pref="object", bool num_first=false);
 

@@ -228,7 +228,7 @@ void ComputeSphere(Fsphere &B, FvectorVec& V)
 
 	// 1: calc first variation
 	Fsphere	S1;
-    Fsphere_compute		(S1,&(*(V.begin())),V.size());
+    Fsphere_compute		(S1,V.begin(),V.size());
 	BOOL B1				= SphereValid(V,S1);
     
 	// 2: calc ordinary algorithm (2nd)
@@ -239,15 +239,15 @@ void ComputeSphere(Fsphere &B, FvectorVec& V)
 	bbox.grow			(EPS_L);
 	bbox.getsphere		(S2.P,S2.R);
 	S2.R = -1;
-	for (FvectorIt I=V.begin(); I!=V.end(); I++)	{
+	for (I=V.begin(); I!=V.end(); I++)	{
 		float d = S2.P.distance_to_sqr(*I);
 		if (d>S2.R) S2.R=d;
 	}
 	S2.R = _sqrt (_abs(S2.R));
 	BOOL B2				= SphereValid(V,S2);
 
-	// 3: calc magic-fm
-	Mgc::Sphere _S3 = Mgc_MinSphere(V.size(), (const Mgc::Vector3*) (&(*(V.begin()))));
+ 	// 3: calc magic-fm
+	Mgc::Sphere _S3 = Mgc::MinSphere(V.size(), (const Mgc::Vector3*) V.begin());
 	Fsphere	S3;
 	S3.P.set			(_S3.Center().x,_S3.Center().y,_S3.Center().z);
 	S3.R				= _S3.Radius();
@@ -255,18 +255,18 @@ void ComputeSphere(Fsphere &B, FvectorVec& V)
 
 	// select best one
 	if (B1 && (S1.R<S2.R)){		// miniball or FM
-		if (B3 && (S3.R<S1.R)){ // FM wins
+     		if (B3 && (S3.R<S1.R)){ // FM wins
         	B.set	(S3);
-		}else{					// MiniBall wins
+		}else{	       				// MiniBall wins
         	B.set	(S1);
-		}
+     		}
 	}else{						// base or FM
-		if (B3 && (S3.R<S2.R)){	// FM wins
+  		if (B3 && (S3.R<S2.R)){	// FM wins
         	B.set	(S3);
-		}else{					// Base wins :)
+		}else{	    				// Base wins :)
         	R_ASSERT(B2);
         	B.set	(S2);
-		}
+ 	}
 	}
 }
 //----------------------------------------------------
@@ -415,4 +415,5 @@ void CEditableObject::ClampByLimits(bool bSelOnly)
     for(BoneIt b_it=lst.begin(); b_it!=lst.end(); b_it++)
     	if (!bSelOnly||(bSelOnly&&(*b_it)->Selected())) (*b_it)->ClampByLimits();
 }
+
 

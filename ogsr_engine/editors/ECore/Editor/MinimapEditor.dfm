@@ -1,9 +1,9 @@
 object TMinimapEditor: TTMinimapEditor
   Left = 360
   Top = 420
+  Width = 601
+  Height = 449
   Caption = 'TMinimapEditor'
-  ClientHeight = 411
-  ClientWidth = 585
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -74,14 +74,12 @@ object TMinimapEditor: TTMinimapEditor
       HorzScrollBarStyles.Width = 17
       HorzScrollBarStyles.ButtonSize = 17
       UseCustomScrollBars = True
-      NotifyUserChangeOnly = True
-      Increment = 1.000000000000000000
-      LargeIncrement = 10.000000000000000000
-      MaxValue = 10000.000000000000000000
-      MinValue = -10000.000000000000000000
+      Increment = 1
+      LargeIncrement = 10
+      MaxValue = 10000
+      MinValue = -10000
       Alignment = taLeftJustify
       TopMargin = 2
-      RightMargin = 5
       BorderSides = [ebsLeft, ebsRight, ebsTop, ebsBottom]
       Transparent = False
       OnChange = ElFloatSpinEditX1Change
@@ -106,14 +104,12 @@ object TMinimapEditor: TTMinimapEditor
       HorzScrollBarStyles.Width = 17
       HorzScrollBarStyles.ButtonSize = 17
       UseCustomScrollBars = True
-      NotifyUserChangeOnly = True
-      Increment = 1.000000000000000000
-      LargeIncrement = 10.000000000000000000
-      MaxValue = 10000.000000000000000000
-      MinValue = -10000.000000000000000000
+      Increment = 1
+      LargeIncrement = 10
+      MaxValue = 10000
+      MinValue = -10000
       Alignment = taLeftJustify
       TopMargin = 2
-      RightMargin = 5
       BorderSides = [ebsLeft, ebsRight, ebsTop, ebsBottom]
       Transparent = False
       OnChange = ElFloatSpinEditX1Change
@@ -138,14 +134,12 @@ object TMinimapEditor: TTMinimapEditor
       HorzScrollBarStyles.Width = 17
       HorzScrollBarStyles.ButtonSize = 17
       UseCustomScrollBars = True
-      NotifyUserChangeOnly = True
-      Increment = 1.000000000000000000
-      LargeIncrement = 10.000000000000000000
-      MaxValue = 10000.000000000000000000
-      MinValue = -10000.000000000000000000
+      Increment = 1
+      LargeIncrement = 10
+      MaxValue = 10000
+      MinValue = -10000
       Alignment = taLeftJustify
       TopMargin = 2
-      RightMargin = 5
       BorderSides = [ebsLeft, ebsRight, ebsTop, ebsBottom]
       Transparent = False
       OnChange = ElFloatSpinEditX1Change
@@ -170,14 +164,12 @@ object TMinimapEditor: TTMinimapEditor
       HorzScrollBarStyles.Width = 17
       HorzScrollBarStyles.ButtonSize = 17
       UseCustomScrollBars = True
-      NotifyUserChangeOnly = True
-      Increment = 1.000000000000000000
-      LargeIncrement = 10.000000000000000000
-      MaxValue = 10000.000000000000000000
-      MinValue = -10000.000000000000000000
+      Increment = 1
+      LargeIncrement = 10
+      MaxValue = 10000
+      MinValue = -10000
       Alignment = taLeftJustify
       TopMargin = 2
-      RightMargin = 5
       BorderSides = [ebsLeft, ebsRight, ebsTop, ebsBottom]
       Transparent = False
       OnChange = ElFloatSpinEditX1Change
@@ -213,7 +205,5 @@ object TMinimapEditor: TTMinimapEditor
     OnMouseDown = imgPanelMouseDown
     OnResize = imgPanelResize
     OnPaint = imgPanelPaint
-    ExplicitWidth = 593
-    ExplicitHeight = 334
   end
 end

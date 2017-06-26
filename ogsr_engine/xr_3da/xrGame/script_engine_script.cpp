@@ -10,8 +10,10 @@
 #include "script_engine.h"
 #include "ai_space.h"
 #include "script_debugger.h"
-//#include <ostream>
 #include "script_additional_libs.h"
+#ifdef XRSE_FACTORY_EXPORTS
+#include <ostream>
+#endif
 
 using namespace luabind;
 
@@ -187,11 +189,12 @@ void msg_and_fail(LPCSTR msg)
 	Msg(msg);
 	R_ASSERT(false);
 }
+#ifndef XRSE_FACTORY_EXPORTS
 void take_screenshot(IRender_interface::ScreenshotMode mode, LPCSTR name)
 {
 	::Render->Screenshot(mode, name);
 }
-
+#endif
 bool GetShift() 
 {
 	return (GetAsyncKeyState(VK_SHIFT) & 0x8000) != 0;
@@ -216,6 +219,7 @@ void CScriptEngine::script_register(lua_State *L)
 		def("log1",			(void(*)(LPCSTR)) &Log),	//RvP
 		def("fail",			(void(*)(LPCSTR)) &msg_and_fail),
 		def("flush_log",	(void(*)(void)) &FlushLog),
+#ifndef XRSE_FACTORY_EXPORTS
 		def("screenshot",	(void(*)(IRender_interface::ScreenshotMode, LPCSTR)) &take_screenshot),
 
 		class_<enum_exporter<IRender_interface::ScreenshotMode> >("screenshot_modes")
@@ -226,6 +230,7 @@ void CScriptEngine::script_register(lua_State *L)
 				value("gamesave", int(IRender_interface::ScreenshotMode::SM_FOR_GAMESAVE)),
 				value("levelmap", int(IRender_interface::ScreenshotMode::SM_FOR_LEVELMAP))
 			],
+#endif
 
 		class_<profile_timer_script>("profile_timer")
 			.def(constructor<>())

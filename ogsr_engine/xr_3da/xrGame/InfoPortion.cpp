@@ -117,7 +117,7 @@ void   CInfoPortion::InitXmlIdToIndex()
 	if(!id_to_index::file_str)
 		id_to_index::file_str = pSettings->r_string("info_portions", "files");
 }
-
+/*
 void _destroy_item_data_vector_cont(T_VECTOR* vec)
 {
 	T_VECTOR::iterator it		= vec->begin();
@@ -138,3 +138,4 @@ void _destroy_item_data_vector_cont(T_VECTOR* vec)
 //.	Log("_tmp.size()",_tmp.size());
 	delete_data	(_tmp);
 }
+*/

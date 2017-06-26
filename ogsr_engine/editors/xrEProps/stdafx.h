@@ -9,7 +9,7 @@
 #include <xrCore.h>
 
 #define smart_cast dynamic_cast
-//#define tanf(a) tan(a)
+
 //refs
 namespace CDB{
 	class MODEL;
@@ -25,6 +25,7 @@ namespace CDB{
 #include "Defines.h"                 
 
 // libs
+#pragma comment		(lib,"xrSoundB.lib")
 #pragma comment		(lib,"xrCoreB.lib")
 #pragma comment		(lib,"EToolsB.lib")
 

@@ -4,12 +4,6 @@
     <Filter Include="Kernel">
       <UniqueIdentifier>{ec60af83-5e9d-454f-b0ca-3559f3e2fd3e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Kernel\Res">
-      <UniqueIdentifier>{91291e84-aa32-4cd3-8990-9853e022eb96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Kernel\Log">
-      <UniqueIdentifier>{0ef15148-68b8-46e3-9ff0-0255b8256b37}</UniqueIdentifier>
-    </Filter>
     <Filter Include="CDB">
       <UniqueIdentifier>{84425239-aa99-4317-8176-851f17fb2347}</UniqueIdentifier>
     </Filter>
@@ -48,49 +42,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="_d3d_extensions.h">
-      <Filter>Kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="defines.h">
-      <Filter>Kernel</Filter>
-    </ClInclude>
     <ClInclude Include="StdAfx.h">
       <Filter>Kernel</Filter>
     </ClInclude>
-    <ClInclude Include="xrThread.h">
-      <Filter>Kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Kernel\Res</Filter>
-    </ClInclude>
-    <ClInclude Include="cl_log.h">
-      <Filter>Kernel\Log</Filter>
-    </ClInclude>
-    <ClInclude Include="cl_collector.h">
-      <Filter>CDB</Filter>
-    </ClInclude>
-    <ClInclude Include="cl_intersect.h">
-      <Filter>CDB</Filter>
-    </ClInclude>
-    <ClInclude Include="xrCDB.h">
-      <Filter>CDB</Filter>
-    </ClInclude>
     <ClInclude Include="b_globals.h">
-      <Filter>External</Filter>
-    </ClInclude>
-    <ClInclude Include="communicate.h">
-      <Filter>External</Filter>
-    </ClInclude>
-    <ClInclude Include="ETextureParams.h">
       <Filter>External</Filter>
     </ClInclude>
     <ClInclude Include="FreeImage.h">
       <Filter>External</Filter>
     </ClInclude>
     <ClInclude Include="progmesh.h">
-      <Filter>External</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader_xrLC.h">
       <Filter>External</Filter>
     </ClInclude>
     <ClInclude Include="std_classes.h">
@@ -120,28 +81,10 @@
     <ClInclude Include="NV_Library\VertexCache.h">
       <Filter>External\NV_Strips</Filter>
     </ClInclude>
-    <ClInclude Include="nv_algebra.h">
-      <Filter>External\NV_Basis</Filter>
-    </ClInclude>
-    <ClInclude Include="nv_math.h">
-      <Filter>External\NV_Basis</Filter>
-    </ClInclude>
-    <ClInclude Include="nv_mathdecl.h">
-      <Filter>External\NV_Basis</Filter>
-    </ClInclude>
-    <ClInclude Include="NVMeshMender.h">
-      <Filter>External\NV_Basis</Filter>
-    </ClInclude>
-    <ClInclude Include="_rect.h">
-      <Filter>%2a%2a%2a COMPILER %2a%2a%2a</Filter>
-    </ClInclude>
     <ClInclude Include="Build.h">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a</Filter>
     </ClInclude>
     <ClInclude Include="cform_build.h">
-      <Filter>%2a%2a%2a COMPILER %2a%2a%2a</Filter>
-    </ClInclude>
-    <ClInclude Include="ELight_def.h">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a</Filter>
     </ClInclude>
     <ClInclude Include="Sector.h">
@@ -165,9 +108,6 @@
     <ClInclude Include="xrImage_Resampler.h">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Deflector</Filter>
     </ClInclude>
-    <ClInclude Include="ArbitraryList.h">
-      <Filter>%2a%2a%2a COMPILER %2a%2a%2a\XRAY</Filter>
-    </ClInclude>
     <ClInclude Include="OGF_Face.h">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a\XRAY</Filter>
     </ClInclude>
@@ -186,16 +126,10 @@
     <ClInclude Include="xrUVpoint.h">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Internal</Filter>
     </ClInclude>
-    <ClInclude Include="tga.h">
-      <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Internal\Targa</Filter>
-    </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Internal\Targa\ILoader</Filter>
     </ClInclude>
     <ClInclude Include="fitter.h">
-      <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="PropSlimTools.h">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Model</Filter>
     </ClInclude>
     <ClInclude Include="xrMU_Model.h">
@@ -210,15 +144,6 @@
     <ClCompile Include="xrLC.cpp">
       <Filter>Kernel</Filter>
     </ClCompile>
-    <ClCompile Include="xrThread.cpp">
-      <Filter>Kernel</Filter>
-    </ClCompile>
-    <ClCompile Include="cl_log.cpp">
-      <Filter>Kernel\Log</Filter>
-    </ClCompile>
-    <ClCompile Include="cl_collector.cpp">
-      <Filter>CDB</Filter>
-    </ClCompile>
     <ClCompile Include="NV_Library\NvTriStrip.cpp">
       <Filter>External\NV_Strips</Filter>
     </ClCompile>
@@ -227,12 +152,6 @@
     </ClCompile>
     <ClCompile Include="NV_Library\VertexCache.cpp">
       <Filter>External\NV_Strips</Filter>
-    </ClCompile>
-    <ClCompile Include="nv_algebra.cpp">
-      <Filter>External\NV_Basis</Filter>
-    </ClCompile>
-    <ClCompile Include="NVMeshMender.cpp">
-      <Filter>External\NV_Basis</Filter>
     </ClCompile>
     <ClCompile Include="xrDetailPatch.cpp">
       <Filter>- OLD -</Filter>
@@ -360,9 +279,6 @@
     <ClCompile Include="xrImage_Resampler.cpp">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Deflector</Filter>
     </ClCompile>
-    <ClCompile Include="fmesh.cpp">
-      <Filter>%2a%2a%2a COMPILER %2a%2a%2a\XRAY</Filter>
-    </ClCompile>
     <ClCompile Include="OGF_Face.cpp">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a\XRAY</Filter>
     </ClCompile>
@@ -380,9 +296,6 @@
     </ClCompile>
     <ClCompile Include="..\xr_3da\xrLoadSurface.cpp">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Internal</Filter>
-    </ClCompile>
-    <ClCompile Include="tga.cpp">
-      <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Internal\Targa</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Internal\Targa\ILoader</Filter>
@@ -426,10 +339,31 @@
     <ClCompile Include="xrMU_Model_Load.cpp">
       <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Model</Filter>
     </ClCompile>
+    <ClCompile Include="X:\ogsr_engine\COMMON_COMPILERS\tga.cpp">
+      <Filter>%2a%2a%2a COMPILER %2a%2a%2a\Internal\Targa</Filter>
+    </ClCompile>
+    <ClCompile Include="X:\ogsr_engine\COMMON_COMPILERS\cl_log.cpp">
+      <Filter>Kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="X:\ogsr_engine\COMMON_COMPILERS\xrThread.cpp">
+      <Filter>Kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xr_3da\fmesh.cpp">
+      <Filter>%2a%2a%2a COMPILER %2a%2a%2a\XRAY</Filter>
+    </ClCompile>
+    <ClCompile Include="..\COMMON_COMPILERS\cl_collector.cpp">
+      <Filter>CDB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\editors\ECore\Engine\nv_algebra.cpp">
+      <Filter>External\NV_Basis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\editors\ECore\Engine\NVMeshMender.cpp">
+      <Filter>External\NV_Basis</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="resource.rc">
-      <Filter>Kernel\Res</Filter>
+    <ResourceCompile Include="X:\ogsr_engine\COMMON_COMPILERS\resource.rc">
+      <Filter>Kernel</Filter>
     </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -52,6 +52,7 @@ extern ENGINE_API CInifile *pGameIni;
 
 #pragma comment( lib, "xrCore.lib"	)
 #pragma comment( lib, "xrCDB.lib"	)
+#ifndef XRSE_FACTORY_EXPORTS
 #pragma comment( lib, "xrSound.lib"	)
 #pragma comment( lib, "lua5.1.lib"	)
 #pragma comment( lib, "luabind.lib"	)
@@ -61,6 +62,7 @@ extern ENGINE_API CInifile *pGameIni;
 #pragma comment( lib, "d3d9.lib"		)
 #pragma comment( lib, "dinput8.lib"		)
 #pragma comment( lib, "dxguid.lib"		)
+#endif
 
 //#ifndef DEBUG
 #	define LUABIND_NO_ERROR_CHECKING

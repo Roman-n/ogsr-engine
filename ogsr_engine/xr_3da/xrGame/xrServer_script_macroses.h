@@ -10,7 +10,7 @@
 
 #include "script_export_macroses.h"
 #include "xrEProps.h"
-#include "../../xrNetServer/net_utils.h"
+#include "net_utils.h"
 #include "ai_space.h"
 #include "script_engine.h"
 
@@ -33,13 +33,22 @@ class CALifeSmartTerrainTask;
 //	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(save,			IWriter)\
 //	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(load,			IReader)
 //#endif
-
+#ifdef XRSE_FACTORY_EXPORTS
+#define INHERIT_ABSTRACT \
+	INHERIT_PURE\
+	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(STATE_Write,	NET_Packet)\
+	DEFINE_LUA_WRAPPER_METHOD_R2P1_V2	(STATE_Read,	NET_Packet,	u16)\
+	DEFINE_LUA_WRAPPER_METHOD_R2P2_V2	(FillProps,		LPCSTR,	PropItemVec)\
+	DEFINE_LUA_WRAPPER_METHOD_R2P1_V4	(OnEvent,		NET_Packet, u16, u32, ClientID)\
+	DEFINE_LUA_WRAPPER_METHOD_0			(init,			CSE_Abstract*)
+#else
 #define INHERIT_ABSTRACT \
 	INHERIT_PURE\
 	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(STATE_Write,	NET_Packet)\
 	DEFINE_LUA_WRAPPER_METHOD_R2P1_V2	(STATE_Read,	NET_Packet,	u16)\
 	DEFINE_LUA_WRAPPER_METHOD_R2P2_V2	(FillProps,		LPCSTR,	PropItemVec)\
 	DEFINE_LUA_WRAPPER_METHOD_0			(init,			CSE_Abstract*)
+#endif
 
 #define INHERIT_ALIFE \
 	INHERIT_ABSTRACT\
@@ -186,12 +195,20 @@ struct CWrapperAbstractItem : public T, public luabind::wrap_base {
 //		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,save,void,IWriter&,IWriter*) \
 //		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,load,void,IReader&,IReader*)
 //#endif
-
+#ifdef XRSE_FACTORY_EXPORTS
 #define luabind_virtual_abstract(a,b) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,FillProps	) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,STATE_Write	) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,STATE_Read	) \
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,OnEvent		) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,init		)
+#else
+#define luabind_virtual_abstract(a,b) \
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a, b, FillProps) \
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a, b, STATE_Write) \
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a, b, STATE_Read) \
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a, b, init)
+#endif
 
 #define luabind_virtual_alife(a,b) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_CONST_0(a,b,can_switch_online,	bool) \

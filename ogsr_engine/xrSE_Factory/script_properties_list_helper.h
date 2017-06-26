@@ -14,7 +14,7 @@
 #endif
 #include "xrEProps.h"
 #include "script_export_space.h"
-#include "script_space.h"
+#include "pch_script.h"
 #include "script_rtoken_list.h"
 
 class CScriptTokenList;

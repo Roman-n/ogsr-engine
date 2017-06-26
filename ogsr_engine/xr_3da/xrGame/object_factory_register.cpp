@@ -169,7 +169,9 @@
 #	include "actor_mp_client.h"
 #endif // NO_XR_GAME
 
+#ifndef XRSE_FACTORY_EXPORTS
 ENGINE_API	bool g_dedicated_server;
+#endif
 
 #ifndef NO_XR_GAME
 #	define ADD(a,b,c,d)			add<a,b>(c,d)
@@ -375,8 +377,10 @@ void CObjectFactory::register_classes	()
 	// because we do not have scripts
 	// and script functionality is not
 	// needed here
+#ifndef XRSE_FACTORY_EXPORTS
 	if (!g_dedicated_server)
 		return;
+#endif
 
 	ADD(CElectricBall			,CSE_ALifeItemArtefact			,TEXT2CLSID("SCRPTART")			,"artefact_s");
 	ADD(CTorch					,CSE_ALifeItemTorch				,TEXT2CLSID("TORCH_S")			,"device_torch_s");

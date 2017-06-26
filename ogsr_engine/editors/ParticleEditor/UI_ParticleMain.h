@@ -38,8 +38,8 @@ public:
     virtual LPCSTR	EditorName				(){return "particle";}
     virtual LPCSTR	EditorDesc				(){return "Particle Editor";}
 
-	virtual bool  ApplyShortCut			(WORD Key, TShiftState Shift);
-    virtual bool  ApplyGlobalShortCut		(WORD Key, TShiftState Shift);
+    virtual bool 	ApplyShortCut			(WORD Key, TShiftState Shift);
+    virtual bool 	ApplyGlobalShortCut		(WORD Key, TShiftState Shift);
 
     // commands
 	virtual	void	RegisterCommands		(); 

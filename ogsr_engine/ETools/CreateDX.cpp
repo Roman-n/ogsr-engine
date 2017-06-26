@@ -7,11 +7,13 @@
 #include	"dxerr.h"
 // misc
 
+#ifndef _WIN64
 extern "C" __declspec( dllimport ) bool WINAPI FSColorPickerDoModal(unsigned int * currentColor, unsigned int * originalColor, const int initialExpansionState);
 extern "C" __declspec(dllexport) bool  __stdcall FSColorPickerExecute(unsigned int * currentColor, unsigned int * originalColor, const int initialExpansionState)
 {
 	return FSColorPickerDoModal(currentColor, originalColor, initialExpansionState);
 }
+#endif
 
 extern "C"{ 
 	ETOOLS_API UINT WINAPI D3DX_GetDriverLevel(LPDIRECT3DDEVICE9 pDevice)

@@ -132,7 +132,7 @@ void CStats::Show(CGameFont* font)
 	DPS.verts	= 0;
 	DPS.calls	= 0;
 	DPS.vs		= 0;
-#ifdef DEBUG
+#ifdef	DEBUG
 	DPS.vb		= 0;
 	DPS.ib		= 0;
 #endif

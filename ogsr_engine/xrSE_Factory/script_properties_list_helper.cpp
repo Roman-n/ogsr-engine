@@ -6,13 +6,12 @@
 //	Description : Script properties list helper
 ////////////////////////////////////////////////////////////////////////////
 
-#include "stdafx.h"
+#include "pch_script.h"
 #include "script_properties_list_helper.h"
 #include "script_token_list.h"
 #include "xrServer_Object_Base.h"
 #include "script_value_container_impl.h"
 #include "script_value_wrapper.h"
-#include "script_space.h"
 
 CSE_Abstract *owner				(luabind::object object)
 {

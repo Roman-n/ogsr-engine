@@ -1,0 +1,1 @@
+XCOPY X:\3rd_party\_BIN\Release\Win32\ X:\ogsr_package\READY\bin /Y /R /I /E

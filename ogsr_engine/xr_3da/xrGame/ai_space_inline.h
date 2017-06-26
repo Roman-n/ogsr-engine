@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #pragma once
-
+#ifndef XRSE_FACTORY_EXPORTS
 IC	CGameGraph					&CAI_Space::game_graph				() const
 {
 	VERIFY					(m_game_graph);
@@ -72,16 +72,16 @@ IC	const CCoverManager			&CAI_Space::cover_manager			() const
 	return					(*m_cover_manager);
 }
 
-IC	CScriptEngine				&CAI_Space::script_engine			() const
-{
-	VERIFY					(m_script_engine);
-	return					(*m_script_engine);
-}
-
 IC	const CPatrolPathStorage &CAI_Space::patrol_paths				() const
 {
 	VERIFY					(m_patrol_path_storage);
 	return					(*m_patrol_path_storage);
+}
+#endif
+IC	CScriptEngine				&CAI_Space::script_engine			() const
+{
+	VERIFY					(m_script_engine);
+	return					(*m_script_engine);
 }
 
 IC	CAI_Space &ai													()

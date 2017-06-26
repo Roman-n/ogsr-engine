@@ -57,7 +57,7 @@ void CObjectFactory::register_script_class			(LPCSTR unknown_class, LPCSTR clsid
 		)
 	);
 }
-
+#ifndef XRSE_FACTORY_EXPORTS
 ENGINE_API	bool g_dedicated_server;
 
 void CObjectFactory::register_script_classes()
@@ -65,6 +65,12 @@ void CObjectFactory::register_script_classes()
 	if (!g_dedicated_server)
 		ai();
 }
+#else
+void CObjectFactory::register_script_classes()
+{
+	ai();
+}
+#endif
 
 using namespace luabind;
 
