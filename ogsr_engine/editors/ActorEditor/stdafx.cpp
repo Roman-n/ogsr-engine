@@ -17,7 +17,7 @@
 //#pragma comment(lib,"d3d9.lib")
 #pragma comment(lib,"dxtB.lib")
 //.#pragma comment(lib,"xrProgressiveB.lib")
-#pragma comment(lib,"MagicFMDLLB.lib")
+#pragma comment(lib,"MagicFMB.lib")
 #pragma comment(lib,"EToolsB.lib")
 //.#pragma comment(lib,"LWOB.lib")
 

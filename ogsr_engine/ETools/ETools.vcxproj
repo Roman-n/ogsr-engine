@@ -152,6 +152,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CallingConvention>Cdecl</CallingConvention>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -159,7 +160,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>libogg_static.lib;libvorbis_static.lib;ColorPicker.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libogg_static.lib;libvorbis_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>user32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -175,7 +176,13 @@
       <Command />
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command />
+      <Command>
+        if Release == $(ConfigurationName) ( if Win32 == $(Platform) (
+            xcopy "$(TargetPath)" "X:\ogsr_package\READY\bin\" /y/i
+            xcopy "$(TargetDir)$(TargetName).pdb" "X:\ogsr_package\READY\bin\" /y/i ) else ( if x64 == $(Platform) (
+              xcopy "$(TargetPath)" "X:\ogsr_package\READY\bin\x64\" /y/i
+              xcopy "$(TargetDir)$(TargetName).pdb" "X:\ogsr_package\READY\bin\x64\" /y/i ) ) )
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

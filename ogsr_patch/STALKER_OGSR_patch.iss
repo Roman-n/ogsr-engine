@@ -12,15 +12,15 @@ AppUpdatesURL=http://forum.ogse.ru/viewtopic.php?f=1&t=2641
 DefaultDirName={code:GetPath}
 DefaultGroupName=S.T.A.L.K.E.R OGSR Mod
 DirExistsWarning=yes
-InfoBeforeFile=X:\ogsr_package\READY\ReadMe_OGSE_RU.txt
-LicenseFile=X:\ogsr_package\READY\License_OGSE_RU.txt
-OutputDir=X:\ogsr_package\Out
-OutputBaseFilename=STALKER_OGSR_beta_1
+InfoBeforeFile=X:\ogsr_patch\READY\ReadMe_OGSR_RU.txt
+LicenseFile=X:\ogsr_package\READY\License_OGSR_RU.txt
+OutputDir=X:\ogsr_patch\Out
+OutputBaseFilename=STALKER_OGSR_beta_1_patch_1
 OutputManifestFile=X:\ogsr_package\Setup-Manifest.txt
 
 VersionInfoCompany=OGS Remastered ModTeam
 VersionInfoCopyright=2016 © OGS Remastered
-VersionInfoDescription=OGSR Mod Beta 1
+VersionInfoDescription=OGSR Mod Beta 1 Patch 1
 
 SetupIconFile=stalker.ico
 
@@ -34,14 +34,18 @@ SlicesPerDisk=1
 DiskSliceSize=1024000000
 AllowCancelDuringInstall=no
 
+UsePreviousAppDir=yes
+CreateUninstallRegKey=no
+UpdateUninstallLogAppName=no
+
 WizardImageFile=X:\ogsr_package\OGSR.bmp
 WizardSmallImageFile=X:\ogsr_package\OGSR_sm.bmp
 WizardImageStretch=yes
 
 [Languages]
-Name: "rus"; MessagesFile: "compiler:Languages\Russian.isl"; LicenseFile: "READY\License_OGSR_RU.txt"; InfoBeforeFile: "READY\ReadMe_OGSR_RU.txt"
-Name: "eng"; MessagesFile: "compiler:Default.isl"; LicenseFile: "READY\License_OGSR_ENG.txt"; InfoBeforeFile: "READY\ReadMe_OGSR_ENG.txt"
-Name: "fra"; MessagesFile: "compiler:Languages\French.isl"; LicenseFile: "READY\License_OGSR_FR.txt"; InfoBeforeFile: "READY\=ReadMe_OGSR_FR.txt"
+Name: "rus"; MessagesFile: "compiler:Languages\Russian.isl"; LicenseFile: "X:\ogsr_package\READY\License_OGSE_RU.txt"; InfoBeforeFile: "READY\ReadMe_OGSE_RU.txt"
+Name: "eng"; MessagesFile: "compiler:Default.isl"; LicenseFile: "X:\ogsr_package\READY\License_OGSE_ENG.txt"; InfoBeforeFile: "READY\ReadMe_OGSE_ENG.txt"
+Name: "fra"; MessagesFile: "compiler:Languages\French.isl"; LicenseFile: "X:\ogsr_package\READY\License_OGSE_FR.txt"; InfoBeforeFile: "READY\=ReadMe_OGSE_FR.txt"
 
 [CustomMessages]
 rus.LaunchOGSR=Запустить OGSR
@@ -79,28 +83,28 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "REDIST\dotNetFx40_Full_x86_x64.exe"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "REDIST\vcredist_x86.exe"; DestDir: "{app}"; Flags: deleteafterinstall
 ; конфигуратор и ресурсы мода
-Source: "X:\ogsr_package\READY\*"; DestDir: "{app}"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\*"; DestDir: "{app}"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
 ; исполняемые файлы мода
-Source: "X:\ogsr_package\READY\bin\*"; DestDir: "{app}\bin"; Flags: createallsubdirs recursesubdirs
+Source: "X:\ogsr_patch\READY\bin\*"; DestDir: "{app}\bin"; Flags: createallsubdirs recursesubdirs
 ; некоторые конфиги мода для работы конфигуратора
-Source: "X:\ogsr_package\READY\gamedata\buc\"; DestDir: "{app}\gamedata\buc"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\config\creatures\actor.ltx"; DestDir: "{app}\gamedata\config\creatures"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\config\tuning\ogsr_version.ltx"; DestDir: "{app}\gamedata\config\tuning"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\config\ui\ui_dynamic.xml"; DestDir: "{app}\gamedata\config\ui"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\config\game_maps_single.mus"; DestDir: "{app}\gamedata\config"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\shaders\ogsr_config.h"; DestDir: "{app}\gamedata\shaders"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\shaders\configurator_defines.h"; DestDir: "{app}\gamedata\shaders"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\buc\"; DestDir: "{app}\gamedata\buc"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\config\creatures\actor.ltx"; DestDir: "{app}\gamedata\config\creatures"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\config\tuning\ogsr_version.ltx"; DestDir: "{app}\gamedata\config\tuning"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\config\ui\ui_dynamic.xml"; DestDir: "{app}\gamedata\config\ui"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\config\game_maps_single.mus"; DestDir: "{app}\gamedata\config"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\shaders\ogsr_config.h"; DestDir: "{app}\gamedata\shaders"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\shaders\configurator_defines.h"; DestDir: "{app}\gamedata\shaders"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
 ; файлы, необходимые для работы СДК
-Source: "X:\ogsr_package\READY\gamedata\sounds\$no_sound.ogg"; DestDir: "{app}\gamedata\sounds"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\meshes\dm\*"; DestDir: "{app}\gamedata\meshes\dm"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\textures\ui\*.ini"; DestDir: "{app}\gamedata\textures\ui"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\textures\textures.ltx"; DestDir: "{app}\gamedata\textures"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\gamemtl.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\lanims.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\particles.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
-Source: "X:\ogsr_package\READY\gamedata\senvironment.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs
-Source: "X:\ogsr_package\READY\gamedata\shaders.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs  
-Source: "X:\ogsr_package\READY\gamedata\shaders_xrlc.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs  
+Source: "X:\ogsr_patch\READY\gamedata\sounds\$no_sound.ogg"; DestDir: "{app}\gamedata\sounds"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\meshes\dm\*"; DestDir: "{app}\gamedata\meshes\dm"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\textures\ui\*.ini"; DestDir: "{app}\gamedata\textures\ui"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\textures\textures.ltx"; DestDir: "{app}\gamedata\textures"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\gamemtl.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\lanims.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\particles.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
+Source: "X:\ogsr_patch\READY\gamedata\senvironment.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs
+Source: "X:\ogsr_patch\READY\gamedata\shaders.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs  
+Source: "X:\ogsr_patch\READY\gamedata\shaders_xrlc.xr"; DestDir: "{app}\gamedata\"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs  
 ; локализация конфигуратора и мода
 Source: "X:\ogsr_package\READY\localization\*"; DestDir: "{app}\localization"; Permissions: users-modify; Flags: createallsubdirs recursesubdirs 
 ; установка в моде языка, выбранного в инсталляторе

@@ -8,10 +8,29 @@
 // misc
 
 #ifndef _WIN64
-extern "C" __declspec( dllimport ) bool WINAPI FSColorPickerDoModal(unsigned int * currentColor, unsigned int * originalColor, const int initialExpansionState);
+//extern "C" __declspec( dllimport ) bool WINAPI FSColorPickerDoModal(unsigned int * currentColor, unsigned int * originalColor, const int initialExpansionState);
 extern "C" __declspec(dllexport) bool  __stdcall FSColorPickerExecute(unsigned int * currentColor, unsigned int * originalColor, const int initialExpansionState)
 {
-	return FSColorPickerDoModal(currentColor, originalColor, initialExpansionState);
+	CHOOSECOLOR cc;		// структура стандартного диалогового окна
+	static COLORREF acrCustClr[16];	// массив пользовательских цветов
+	HWND hwnd;			// окно владелец
+
+									// Инициализация CHOOSECOLOR
+	ZeroMemory(&cc, sizeof(CHOOSECOLOR));
+	cc.lStructSize = sizeof(CHOOSECOLOR);
+	cc.hwndOwner = hwnd;
+	cc.lpCustColors = (LPDWORD)acrCustClr;
+	cc.rgbResult = RGB((*currentColor)&0xff, ((*currentColor) & 0xff)>>8, ((*currentColor) & 0xff) >> 16);
+
+	cc.Flags = CC_FULLOPEN | CC_RGBINIT;
+
+	if (ChooseColor(&cc) == TRUE)
+	{
+		*currentColor = (unsigned int)cc.rgbResult;
+		return true;
+	}
+	return false;
+	//return FSColorPickerDoModal(currentColor, originalColor, initialExpansionState);
 }
 #endif
 

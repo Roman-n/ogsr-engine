@@ -29,6 +29,8 @@
 #pragma comment(lib,"xrCore.lib")
 #pragma comment(lib,"xrQSlim.lib")
 #pragma comment(lib,"xrCDB.lib")
+
+#include <Commdlg.h>
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
 int (WINAPIV * __vsnprintf)(char *, size_t, const char*, va_list) = _vsnprintf;
