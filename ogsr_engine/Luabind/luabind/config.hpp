@@ -24,70 +24,41 @@
 #ifndef LUABIND_CONFIG_HPP_INCLUDED
 #define LUABIND_CONFIG_HPP_INCLUDED
 
-#if !defined(DEBUG) || defined(FORCE_NO_EXCEPTIONS)
-	// release: no error checking, no exceptions
-	#define LUABIND_NO_EXCEPTIONS
-//	#define BOOST_THROW_EXCEPTION_HPP_INCLUDED
-
-	namespace std	{	class exception; }
-//	namespace boost {	void  throw_exception(const std::exception &A);	};
-#endif
-#define LUABIND_DONT_COPY_STRINGS
-
-#include "../xrCore/xrCore.h"
 #include <boost/config.hpp>
+#include <boost/version.hpp>
+#include <boost/detail/workaround.hpp>
 
-//namespace std {
-//	void terminate();
-//}
+//#include <luabind/build_information.hpp>
+#define LUABIND_DYNAMIC_LINK
+#define LUABIND_NO_ERROR_CHECKING
 
 #ifdef BOOST_MSVC
-	#define LUABIND_ANONYMOUS_FIX static
+    #define LUABIND_ANONYMOUS_FIX static
 #else
-	#define LUABIND_ANONYMOUS_FIX
+    #define LUABIND_ANONYMOUS_FIX
 #endif
 
-#if defined (BOOST_MSVC) && (BOOST_MSVC <= 1200)
-
-#define for if (false) {} else for
-
-#include <cstring>
-
-namespace std
-{
-	using ::strlen;
-	using ::strcmp;
-	using ::type_info;
-}
-
-#endif
-
-// #define string_class std::string
-#define string_class xr_string
-
-#if defined (BOOST_MSVC) && (BOOST_MSVC <= 1300)
-	#define LUABIND_MSVC_TYPENAME
-#else
-	#define LUABIND_MSVC_TYPENAME typename
+#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
+    #error "Support for your version of Visual C++ has been removed from this version of Luabind"
 #endif
 
 // the maximum number of arguments of functions that's
 // registered. Must at least be 2
 #ifndef LUABIND_MAX_ARITY
-	#define LUABIND_MAX_ARITY 10
+    #define LUABIND_MAX_ARITY 10
 #elif LUABIND_MAX_ARITY <= 1
-	#undef LUABIND_MAX_ARITY
-	#define LUABIND_MAX_ARITY 2
+    #undef LUABIND_MAX_ARITY
+    #define LUABIND_MAX_ARITY 2
 #endif
 
 // the maximum number of classes one class
 // can derive from
 // max bases must at least be 1
 #ifndef LUABIND_MAX_BASES
-	#define LUABIND_MAX_BASES 10
+    #define LUABIND_MAX_BASES 10
 #elif LUABIND_MAX_BASES <= 0
-	#undef LUABIND_MAX_BASES
-	#define LUABIND_MAX_BASES 1
+    #undef LUABIND_MAX_BASES
+    #define LUABIND_MAX_BASES 1
 #endif
 
 // LUABIND_NO_ERROR_CHECKING
@@ -108,29 +79,6 @@ namespace std
 // multiple lua states and use coroutines, but only
 // one of your real threads may run lua code.
 
-// If you don't want to use the rtti supplied by C++
-// you can supply your own type-info structure with the
-// LUABIND_TYPE_INFO define. Your type-info structure
-// must be copyable and it must be able to compare itself
-// against other type-info structures. You supply the compare
-// function through the LUABIND_TYPE_INFO_EQUAL()
-// define. It should compare the two type-info structures
-// it is given and return true if they represent the same type
-// and false otherwise. You also have to supply a function
-// to generate your type-info structure. You do this through
-// the LUABIND_TYPEID() define. It takes a type as it's
-// parameter. That is, a compile time parameter. To use it
-// you probably have to make a traits class with specializations
-// for all classes that you have type-info for.
-
-#ifndef LUABIND_TYPE_INFO
-	#define LUABIND_TYPE_INFO const std::type_info*
-	#define LUABIND_TYPEID(t) &typeid(t)
-	#define LUABIND_TYPE_INFO_EQUAL(i1, i2) *i1 == *i2
-	#define LUABIND_INVALID_TYPE_INFO &typeid(detail::null_type)
-#include <typeinfo>
-#endif
-
 // LUABIND_NO_EXCEPTIONS
 // this define will disable all usage of try, catch and throw in
 // luabind. This will in many cases disable runtime-errors, such
@@ -139,29 +87,81 @@ namespace std
 // Luabind requires that no function called directly or indirectly
 // by luabind throws an exception (throwing exceptions through
 // C code has undefined behavior, lua is written in C).
-// #define LUABIND_NO_EXCEPTIONS
 
-#define LUABIND_EXPORT __declspec(dllexport)
-#define LUABIND_IMPORT __declspec(dllimport)
-// If you're building luabind as a dll on windows with devstudio
-// you can set LUABIND_EXPORT to __declspec(dllexport)
-// and LUABIND_IMPORT to __declspec(dllimport)
+#define LUABIND_VERSION_NUM 920
+#include "../xrCore/xrCore.h"
 
-// this define is set if we're currently building a luabind file
-// select import or export depending on it
-#ifdef LUABIND_BUILDING
-	#ifdef LUABIND_EXPORT
-		#define LUABIND_API LUABIND_EXPORT
-	#else
-		#define LUABIND_API
-	#endif
-#else
-	#ifdef LUABIND_IMPORT
-		#define LUABIND_API LUABIND_IMPORT
-	#else
-		#define LUABIND_API
-	#endif
+#ifdef LUABIND_DYNAMIC_LINK
+# if defined (BOOST_WINDOWS)
+#  ifdef LUABIND_BUILDING
+#   define LUABIND_API __declspec(dllexport)
+#  else
+#   define LUABIND_API __declspec(dllimport)
+#  endif
+# elif defined (__CYGWIN__)
+#  ifdef LUABIND_BUILDING
+#   define LUABIND_API __attribute__ ((dllexport))
+#  else
+#   define LUABIND_API __attribute__ ((dllimport))
+#  endif
+# else
+#  if defined(__GNUC__) && __GNUC__ >=4
+#   define LUABIND_API __attribute__ ((visibility("default")))
+#  endif
+# endif
 #endif
 
-#endif // LUABIND_CONFIG_HPP_INCLUDED
+#ifndef LUABIND_API
+# define LUABIND_API
+#endif
 
+// C++11 features //
+
+#if (   defined(BOOST_NO_CXX11_SCOPED_ENUMS) \
+     || defined(BOOST_NO_SCOPED_ENUMS)                 \
+     || BOOST_VERSION < 105600                         \
+        && (   defined(BOOST_NO_CXX11_HDR_TYPE_TRAITS) \
+            || defined(BOOST_NO_0X_HDR_TYPE_TRAITS)))
+#    define LUABIND_NO_SCOPED_ENUM
+#endif
+
+#if (   defined(BOOST_NO_CXX11_RVALUE_REFERENCES) \
+     || defined(BOOST_NO_RVALUE_REFERENCES))
+#    define LUABIND_NO_RVALUE_REFERENCES
+#endif
+
+// If you use Boost <= 1.46 but your compiler is C++11 compliant and marks
+// destructors as noexcept by default, you need to define LUABIND_USE_NOEXCEPT.
+#if (   !defined(BOOST_NO_NOEXCEPT) \
+     && !defined(BOOST_NO_CXX11_NOEXCEPT) \
+     && BOOST_VERSION >= 104700)
+#    define LUABIND_USE_NOEXCEPT
+#endif
+
+#ifndef LUABIND_MAY_THROW
+#    ifdef BOOST_NOEXCEPT_IF
+#        define LUABIND_MAY_THROW BOOST_NOEXCEPT_IF(false)
+#    elif defined(LUABIND_USE_NOEXCEPT)
+#        define LUABIND_MAY_THROW noexcept(false)
+#    else
+#       define LUABIND_MAY_THROW
+#    endif
+#endif
+
+#ifndef LUABIND_NOEXCEPT
+#    ifdef BOOST_NOEXCEPT_OR_NOTHROW
+#        define LUABIND_NOEXCEPT BOOST_NOEXCEPT_OR_NOTHROW
+#    elif defined(LUABIND_USE_NOEXCEPT)
+#        define LUABIND_NOEXCEPT noexcept
+#    else
+#       define LUABIND_NOEXCEPT throw()
+#    endif
+#endif
+
+namespace luabind {
+
+LUABIND_API void disable_super_deprecation();
+
+} // namespace luabind
+
+#endif // LUABIND_CONFIG_HPP_INCLUDED

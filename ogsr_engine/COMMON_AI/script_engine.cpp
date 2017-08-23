@@ -87,11 +87,11 @@ int  CScriptEngine::lua_pcall_failed	(lua_State *L)
 	return					(LUA_ERRRUN);
 }
 
-void lua_cast_failed					(lua_State *L, LUABIND_TYPE_INFO info)
+void lua_cast_failed					(lua_State *L, luabind::type_id const &info)
 {
 	CScriptEngine::print_output	(L,"",LUA_ERRRUN);
 
-	Debug.fatal				(DEBUG_INFO,"LUA error: cannot cast lua value to %s",info->name());
+	Debug.fatal				(DEBUG_INFO,"LUA error: cannot cast lua value to %s",info.name());
 }
 
 void CScriptEngine::setup_callbacks		()
@@ -161,6 +161,7 @@ void CScriptEngine::init				()
 	CScriptStorage::reinit				();
 
 	luabind::open						(lua());
+	luabind::disable_super_deprecation();
 	setup_callbacks						();
 	export_classes						(lua());
 	setup_auto_load						();
@@ -309,7 +310,9 @@ bool CScriptEngine::function_object(LPCSTR function_to_call, luabind::object &ob
 {
 	if (!xr_strlen(function_to_call))
 		return				(false);
-
+#ifdef OGSE_DEBUG
+	Msg("[CScriptStorage::name_space] : function_to_call : %s", function_to_call);
+#endif
 	string256				name_space, function;
 
 	parse_script_namespace	(function_to_call,name_space,function);

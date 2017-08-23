@@ -34,12 +34,20 @@ void CEngineAPI::Initialize(void)
 	// render
 //	LPCSTR			r1_name	= "xrRender_R1.dll";
 	LPCSTR			r2_name	= "xrRender.dll";
+	LPCSTR			r4_name = "xrRender_DX11.dll";
 
 #ifndef DEDICATED_SERVER
 //	if (psDeviceFlags.test(rsR2) )	{
 		// try to initialize R2
-		Log				("Loading DLL:",	r2_name);
-		hRender			= LoadLibrary		(r2_name);
+		if (strstr(Core.Params, "-r4"))
+		{
+			Log("Loading DLL:", r4_name);
+			hRender = LoadLibrary(r4_name);
+		}
+		else {
+			Log("Loading DLL:", r2_name);
+			hRender = LoadLibrary(r2_name);
+		}
 		if (0==hRender)	{
 			// try to load R1
 			Msg			("...Failed - incompatible hardware.");

@@ -42,13 +42,19 @@ TEMPLATE_SPECIALIZATION
 IC	CSScriptCallbackEx &CSScriptCallbackEx::operator=	(const CScriptCallbackEx_ &callback)
 {
 	clear				();
-	
+#if LUABIND_VERSION_NUM < 700	
 	if (callback.m_functor.is_valid() && callback.m_functor.lua_state())
 		m_functor		= callback.m_functor;
 
 	if (callback.m_object.is_valid() && callback.m_object.lua_state())
 		m_object		= callback.m_object;
+#else
+	if (callback.m_functor.is_valid() && callback.m_functor.interpreter())
+		m_functor		= callback.m_functor;
 
+	if (callback.m_object.is_valid() && callback.m_object.interpreter())
+		m_object		= callback.m_object;
+#endif
 	return				(*this);
 }
 
@@ -71,7 +77,11 @@ IC	void CSScriptCallbackEx::set						(const functor_type &functor, const object_
 TEMPLATE_SPECIALIZATION
 IC	bool CSScriptCallbackEx::empty						() const
 {
+#if LUABIND_VERSION_NUM < 700	
 	return				(!!m_functor.lua_state());
+#else
+	return				(!!m_functor.interpreter());
+#endif
 }
 
 #undef TEMPLATE_SPECIALIZATION

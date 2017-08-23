@@ -13,7 +13,11 @@
 
 IC	bool compare_safe(const luabind::object &o1 , const luabind::object &o2)
 {
+#if LUABIND_VERSION_NUM < 700
 	if ((o1.type() == LUA_TNIL) && (o2.type() == LUA_TNIL))
+#else
+	if ((luabind::type(o1) == LUA_TNIL) && (luabind::type(o2) == LUA_TNIL))
+#endif
 		return						(true);
 
 	return							(o1 == o2);
@@ -47,10 +51,10 @@ IC	bool compare_safe(const luabind::object &o1 , const luabind::object &o2)
 					VERIFY		(m_functor.is_valid());\
 					if (m_object.is_valid()) {\
 						VERIFY	(m_object.is_valid());\
-						macros_return_operator (m_functor(m_object _5 _6));\
+						macros_return_operator	(m_functor(m_object _5 _6));\
 					}\
 					else\
-						macros_return_operator (m_functor(_6));\
+						macros_return_operator	(m_functor(_6)); \
 				}\
 			}\
 			process_error\

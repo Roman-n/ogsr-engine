@@ -416,7 +416,11 @@ luabind::object Script::lua_namespace_table(CLuaVirtualMachine *tpLuaVM, LPCSTR 
 	string256			S1;
 	strcpy_s				(S1,namespace_name);
 	LPSTR				S = S1;
+#if LUABIND_VERSION_NUM < 700
 	luabind::object		lua_namespace = luabind::get_globals(tpLuaVM);
+#else
+	luabind::object		lua_namespace = luabind::globals(tpLuaVM);
+#endif
 	for (;;) {
 		if (!xr_strlen(S))
 			return		(lua_namespace);

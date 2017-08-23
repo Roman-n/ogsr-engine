@@ -43,11 +43,6 @@ void FlushLogs()
 #endif // DEBUG
 }
 
-void verify_if_thread_is_running()
-{
-	THROW2	(ai().script_engine().current_thread(),"coroutine.yield() is called outside the LUA thread!");
-}
-
 bool editor()
 {
 #ifdef XRGAME_EXPORTS
@@ -217,6 +212,27 @@ void CScriptEngine::script_register(lua_State *L)
 		def("log1",			(void(*)(LPCSTR)) &Log),	//RvP
 		def("fail",			(void(*)(LPCSTR)) &msg_and_fail),
 		def("flush_log",	(void(*)(void)) &FlushLog),
+		def("log",			LuaLog),
+		def("error_log",	ErrorLog),
+		def("flush",		FlushLogs),
+		def("prefetch",		prefetch_module),
+		def("editor",		editor),
+		def("bit_and",		bit_and),
+		def("bit_or",		bit_or),
+		def("bit_xor",		bit_xor),
+		def("bit_not",		bit_not),
+		def("user_name",	user_name),
+		def("time_global", script_time_global),
+
+		// функции из ogse.dll
+		def("GetShift",		GetShift),
+		def("GetLAlt",		GetLAlt),
+		def("GetRAlt",		GetRAlt),
+		def("GetAlt",		GetAlt),
+
+#ifdef XRGAME_EXPORTS
+		def("device",		get_device),
+#endif
 #ifndef XRSE_FACTORY_EXPORTS
 		def("screenshot",	(void(*)(IRender_interface::ScreenshotMode, LPCSTR)) &take_screenshot),
 
@@ -239,27 +255,4 @@ void CScriptEngine::script_register(lua_State *L)
 			.def("stop",&profile_timer_script::stop)
 			.def("time",&profile_timer_script::time)
 	];
-
-	function	(L,	"log",							LuaLog);
-	function	(L,	"error_log",					ErrorLog);
-	function	(L,	"flush",						FlushLogs);
-	function	(L,	"prefetch",						prefetch_module);
-	function	(L,	"verify_if_thread_is_running",	verify_if_thread_is_running);
-	function	(L,	"editor",						editor);
-	function	(L,	"bit_and",						bit_and);
-	function	(L,	"bit_or",						bit_or);
-	function	(L,	"bit_xor",						bit_xor);
-	function	(L,	"bit_not",						bit_not);
-	function	(L, "user_name",					user_name);
-	function	(L, "time_global",					script_time_global);
-
-	// функции из ogse.dll
-	function(L, "GetShift", GetShift);
-	function(L, "GetLAlt", GetLAlt);
-	function(L, "GetRAlt", GetRAlt);
-	function(L, "GetAlt", GetAlt);
-
-#ifdef XRGAME_EXPORTS
-	function	(L,	"device",						get_device);
-#endif
 }

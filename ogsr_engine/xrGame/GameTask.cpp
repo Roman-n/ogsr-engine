@@ -31,7 +31,11 @@ ALife::_STORY_ID	story_id	(LPCSTR story_id)
 							(
 		object_cast<int>(
 			luabind::object(
+#if LUABIND_VERSION_NUM < 700
 				luabind::get_globals(
+#else
+				luabind::globals(
+#endif
 					ai().script_engine().lua()
 				)
 				["story_ids"]

@@ -36,19 +36,10 @@
     <ClCompile Include="src\error.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\find_best_match.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\function.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\implicit_cast.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\link_compatibility.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\object_rep.cpp">
@@ -58,9 +49,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\pcall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ref.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\scope.cpp">
@@ -75,11 +63,29 @@
     <ClCompile Include="src\wrapper_base.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\exception_handler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\function_introspection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\inheritance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua51compat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\operator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\set_package_preload.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shared_ptr_converter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="luabind\detail\calc_arity.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
     <ClInclude Include="luabind\detail\call.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
@@ -92,19 +98,10 @@
     <ClInclude Include="luabind\detail\call_operator_iterate.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
-    <ClInclude Include="luabind\detail\class_cache.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
     <ClInclude Include="luabind\detail\class_registry.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
     <ClInclude Include="luabind\detail\class_rep.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\class_rep_scope.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\construct_rep.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
     <ClInclude Include="luabind\detail\constructor.hpp">
@@ -122,67 +119,25 @@
     <ClInclude Include="luabind\detail\enum_maker.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
-    <ClInclude Include="luabind\detail\find_best_match.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
     <ClInclude Include="luabind\detail\garbage_collector.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\get_overload_signature.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\get_signature.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\implicit_cast.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\is_indirect_const.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
     <ClInclude Include="luabind\detail\link_compatibility.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
-    <ClInclude Include="luabind\detail\lua_strings.h">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\method_rep.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\object_funs.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
     <ClInclude Include="luabind\detail\object_rep.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\open.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
     <ClInclude Include="luabind\detail\operator_id.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
-    <ClInclude Include="luabind\detail\operators.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
     <ClInclude Include="luabind\detail\other.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\overload_rep.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\overload_rep_base.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\overload_rep_impl.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
     <ClInclude Include="luabind\detail\pcall.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
     <ClInclude Include="luabind\detail\pointee_sizeof.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\pointee_typeid.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
     <ClInclude Include="luabind\detail\policy.hpp">
@@ -192,9 +147,6 @@
       <Filter>Header Files\detail</Filter>
     </ClInclude>
     <ClInclude Include="luabind\detail\property.hpp">
-      <Filter>Header Files\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\detail\ref.hpp">
       <Filter>Header Files\detail</Filter>
     </ClInclude>
     <ClInclude Include="luabind\detail\signature_match.hpp">
@@ -224,9 +176,6 @@
     <ClInclude Include="luabind\class_info.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="luabind\com_policy.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="luabind\config.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -246,9 +195,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="luabind\function.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="luabind\functor.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="luabind\iterator_policy.hpp">
@@ -291,6 +237,105 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="luabind\yield_policy.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\from_stack.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\get_pointer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\handle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\nil.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\value_wrapper.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\detail\has_get_pointer.hpp">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\detail\most_derived.hpp">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\detail\object_call.hpp">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\functor.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\detail\deduce_signature.hpp">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\detail\format_signature.hpp">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\detail\inheritance.hpp">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\detail\instance_holder.hpp">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\detail\make_instance.hpp">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\detail\object.hpp">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\error_callback_fun.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\exception_handler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\function_converter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\function_introspection.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\functor_fwd.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\get_main_thread.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\intrusive_ptr_converter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\lua_state_fwd.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\make_function.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\no_dependency.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\object_fwd.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\set_package_preload.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\shared_ptr_converter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\stack.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\std_shared_ptr_converter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\tag_function.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\typeid.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luabind\version.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

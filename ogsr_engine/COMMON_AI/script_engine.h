@@ -16,7 +16,6 @@
 extern "C" {
 	#include <lua.h>
 	#include <luajit.h>
-	#include <lcoco.h>
 };
 //#define DBG_DISABLE_SCRIPTS
 
@@ -84,7 +83,7 @@ public:
 	IC		void				parse_script_namespace		(LPCSTR function_to_call, LPSTR name_space, LPSTR functor);
 
 	template <typename _result_type>
-	IC		bool				functor						(LPCSTR function_to_call, luabind::functor<_result_type> &lua_function);
+	IC		bool				functor(LPCSTR function_to_call, luabind::functor<_result_type> &lua_function);
 
 #ifdef USE_DEBUGGER
 			void				stopDebugger				();

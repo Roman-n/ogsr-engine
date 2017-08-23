@@ -25,105 +25,124 @@
 #define LUABIND_CONTAINER_POLICY_HPP_INCLUDED
 
 #include <luabind/config.hpp>
-#include <luabind/detail/policy.hpp>
+#include <luabind/detail/decorate_type.hpp>  // for LUABIND_DECORATE_TYPE
+#include <luabind/detail/policy.hpp>    // for policy_cons, etc
+#include <luabind/detail/primitives.hpp>  // for null_type (ptr only), etc
+
+#include <boost/mpl/apply_wrap.hpp>
+#include <boost/mpl/if.hpp>             // for if_
+#include <boost/type_traits/is_same.hpp>  // for is_same
 
 namespace luabind { namespace detail {
 
-	template<class Policies>
-	struct container_converter_lua_to_cpp
-	{
-		template<class T>
-		T apply(lua_State* L, by_const_reference<T>, int index)
-		{
-			typedef typename T::value_type value_type;
+    namespace mpl = boost::mpl;
 
-			typedef typename find_conversion_policy<1, Policies>::type converter_policy;
-			typename converter_policy::template generate_converter<value_type, lua_to_cpp>::type converter;
+    template<class Policies>
+    struct container_converter_lua_to_cpp
+    {
+        int consumed_args() const
+        {
+            return 1;
+        }
 
-			T container;
+        template<class T>
+        T apply(lua_State* L, by_const_reference<T>, int index)
+        {
+            typedef typename T::value_type value_type;
 
-			lua_pushnil(L);
-			while (lua_next(L, index))
-			{
-				container.push_back(converter.apply(L, LUABIND_DECORATE_TYPE(value_type), -1));
-				lua_pop(L, 1); // pop value
-			}
+            typedef typename find_conversion_policy<1, Policies>::type converter_policy;
+            typename mpl::apply_wrap2<converter_policy,value_type,lua_to_cpp>::type converter;
 
-			return container;
-		}
+            T container;
 
-		template<class T>
-		T apply(lua_State* L, by_value<T>, int index)
-		{
-			return apply(L, by_const_reference<T>(), index);
-		}
+            lua_pushnil(L);
+            while (lua_next(L, index))
+            {
+                container.push_back(converter.apply(L, LUABIND_DECORATE_TYPE(value_type), -1));
+                lua_pop(L, 1); // pop value
+            }
 
-		template<class T>
-		static int match(lua_State* L, by_const_reference<T>, int index)
-		{
-			if (lua_istable(L, index)) return 0; else return -1;
-		}
+            return container;
+        }
 
-		template<class T>
-		void converter_postcall(lua_State*, T, int) {}
-	};
+        template<class T>
+        T apply(lua_State* L, by_value<T>, int index)
+        {
+            return apply(L, by_const_reference<T>(), index);
+        }
 
-	template<class Policies>
-	struct container_converter_cpp_to_lua
-	{
-		template<class T>
-		void apply(lua_State* L, const T& container)
-		{
-			typedef typename T::value_type value_type;
+        template<class T>
+        static int match(lua_State* L, by_const_reference<T>, int index)
+        {
+            if (lua_istable(L, index)) return 0; else return -1;
+        }
 
-			typedef typename find_conversion_policy<1, Policies>::type converter_policy;
-			typename converter_policy::template generate_converter<value_type, cpp_to_lua>::type converter;
+        template<class T>
+        void converter_postcall(lua_State*, T, int) {}
+    };
 
-			lua_newtable(L);
+    template<class Policies>
+    struct container_converter_cpp_to_lua
+    {
+        template<class T>
+        void apply(lua_State* L, const T& container)
+        {
+            typedef typename T::value_type value_type;
 
-			int index = 1;
+            typedef typename find_conversion_policy<1, Policies>::type converter_policy;
+            typename mpl::apply_wrap2<converter_policy,value_type,lua_to_cpp>::type converter;
 
-			for (typename T::const_iterator i = container.begin(); i != container.end(); ++i)
-			{
-				converter.apply(L, *i);
-				lua_rawseti(L, -2, index);
-				++index;
-			}
-		}
-	};
+            lua_newtable(L);
 
-	template<int N, class Policies>
-//	struct container_policy : converter_policy_tag
-	struct container_policy : conversion_policy<N>
-	{
-//		BOOST_STATIC_CONSTANT(int, index = N);
+            int index = 1;
 
-		static void precall(lua_State*, const index_map&) {}
-		static void postcall(lua_State*, const index_map&) {}
+            for (typename T::const_iterator i = container.begin(); i != container.end(); ++i)
+            {
+                converter.apply(L, *i);
+                lua_rawseti(L, -2, index);
+                ++index;
+            }
+        }
+    };
 
-		struct only_accepts_nonconst_pointers {};
+    template<int N, class Policies>
+//  struct container_policy : converter_policy_tag
+    struct container_policy : conversion_policy<N>
+    {
+//      BOOST_STATIC_CONSTANT(int, index = N);
 
-		template<class T, class Direction>
-		struct generate_converter
-		{
-			typedef typename boost::mpl::if_<boost::is_same<lua_to_cpp, Direction>
-				, container_converter_lua_to_cpp<Policies>
-				, container_converter_cpp_to_lua<Policies>
-			>::type type;
-		};
-	};
+        static void precall(lua_State*, const index_map&) {}
+        static void postcall(lua_State*, const index_map&) {}
+
+        struct only_accepts_nonconst_pointers {};
+
+        template<class T, class Direction>
+        struct apply
+        {
+            typedef typename boost::mpl::if_<boost::is_same<lua_to_cpp, Direction>
+                , container_converter_lua_to_cpp<Policies>
+                , container_converter_cpp_to_lua<Policies>
+            >::type type;
+        };
+    };
 
 }}
 
 namespace luabind
 {
-	template<int N>
-	detail::policy_cons<detail::container_policy<N, detail::null_type>, detail::null_type> 
-	container(boost::arg<N>) { return detail::policy_cons<detail::container_policy<N, detail::null_type>, detail::null_type>(); }
+    template<int N>
+    detail::policy_cons<detail::container_policy<N, detail::null_type>, detail::null_type>
+    container(LUABIND_PLACEHOLDER_ARG(N))
+    {
+        return detail::policy_cons<detail::container_policy<N, detail::null_type>, detail::null_type>();
+    }
 
-	template<int N, class Policies>
-	detail::policy_cons<detail::container_policy<N, Policies>, detail::null_type> 
-	container(boost::arg<N>, const Policies&) { return detail::policy_cons<detail::container_policy<N, Policies>, detail::null_type>(); }
+    template<int N, class Policies>
+    detail::policy_cons<detail::container_policy<N, Policies>, detail::null_type>
+    container(LUABIND_PLACEHOLDER_ARG(N), const Policies&)
+    {
+        return detail::policy_cons<detail::container_policy<N, Policies>, detail::null_type>();
+    }
 }
 
 #endif // LUABIND_CONTAINER_POLICY_HPP_INCLUDED

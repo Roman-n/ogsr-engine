@@ -15,8 +15,8 @@ object TMinimapEditor: TTMinimapEditor
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 334
-    Width = 593
+    Top = 330
+    Width = 585
     Height = 81
     Align = alBottom
     BevelOuter = bvNone
@@ -197,8 +197,8 @@ object TMinimapEditor: TTMinimapEditor
   object imgPanel: TMxPanel
     Left = 0
     Top = 0
-    Width = 593
-    Height = 334
+    Width = 585
+    Height = 330
     Align = alClient
     Color = 10528425
     TabOrder = 1

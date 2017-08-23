@@ -16,17 +16,17 @@ object DB_packer: TDB_packer
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 679
-    Height = 489
+    Width = 671
+    Height = 485
     Align = alClient
     BevelOuter = bvNone
     Color = 10528425
     TabOrder = 0
     object Panel5: TPanel
-      Left = 382
+      Left = 374
       Top = 0
       Width = 297
-      Height = 489
+      Height = 485
       Align = alRight
       BevelInner = bvLowered
       BevelOuter = bvSpace
@@ -36,7 +36,7 @@ object DB_packer: TDB_packer
         Left = 2
         Top = 2
         Width = 293
-        Height = 485
+        Height = 481
         Cursor = crDefault
         LeftPosition = 0
         RootFolder = sfoDesktop
@@ -96,8 +96,8 @@ object DB_packer: TDB_packer
     object Panel6: TPanel
       Left = 0
       Top = 0
-      Width = 382
-      Height = 489
+      Width = 374
+      Height = 485
       Align = alClient
       BevelInner = bvLowered
       BevelOuter = bvSpace
@@ -106,7 +106,7 @@ object DB_packer: TDB_packer
       object Splitter1: TSplitter
         Left = 2
         Top = 233
-        Width = 378
+        Width = 370
         Height = 2
         Cursor = crVSplit
         Align = alTop
@@ -114,16 +114,16 @@ object DB_packer: TDB_packer
       object Panel3: TPanel
         Left = 2
         Top = 235
-        Width = 378
-        Height = 252
+        Width = 370
+        Height = 248
         Align = alClient
         BevelInner = bvLowered
         BevelOuter = bvSpace
         Color = 10528425
         TabOrder = 0
         DesignSize = (
-          378
-          252)
+          370
+          248)
         object MxLabel2: TMxLabel
           Left = 8
           Top = 4
@@ -195,7 +195,7 @@ object DB_packer: TDB_packer
       object Panel4: TPanel
         Left = 2
         Top = 2
-        Width = 378
+        Width = 370
         Height = 231
         Align = alTop
         BevelInner = bvLowered
@@ -203,7 +203,7 @@ object DB_packer: TDB_packer
         Color = 10528425
         TabOrder = 1
         DesignSize = (
-          378
+          370
           231)
         object MxLabel1: TMxLabel
           Left = 8
@@ -277,8 +277,8 @@ object DB_packer: TDB_packer
   end
   object Panel2: TPanel
     Left = 0
-    Top = 489
-    Width = 679
+    Top = 485
+    Width = 671
     Height = 73
     Align = alBottom
     BevelInner = bvLowered

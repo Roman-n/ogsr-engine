@@ -24,10 +24,11 @@
 #ifndef LUABIND_BIND_HPP_INCLUDED
 #define LUABIND_BIND_HPP_INCLUDED
 
-#include <luabind/config.hpp>
 #include <luabind/class.hpp>
+#include <luabind/config.hpp>
 #include <luabind/function.hpp>
-#include <luabind/functor.hpp>
 #include <luabind/open.hpp>
 
+// KD
+#include <luabind/functor.hpp>
 #endif // LUABIND_BIND_HPP_INCLUDED

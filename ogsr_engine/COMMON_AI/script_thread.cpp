@@ -7,10 +7,13 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "pch_script.h"
+#include "script_engine.h"
+#if LUAJIT_VERSION_NUM < 20000
 extern "C" {
 	#include "lstate.h"
+	#include "lcoco.h"
 };
-#include "script_engine.h"
+#endif
 #include "script_thread.h"
 #include "ai_space.h"
 
@@ -59,7 +62,11 @@ CScriptThread::CScriptThread(LPCSTR caNamespaceName, bool do_string, bool reload
 
 //		print_stack_		(ai().script_engine().lua());
 //		m_virtual_machine	= lua_newthread(ai().script_engine().lua());
+#if LUAJIT_VERSION_NUM < 20000
 		m_virtual_machine	= lua_newcthread(ai().script_engine().lua(),0);
+#else
+		m_virtual_machine = lua_newthread(ai().script_engine().lua());
+#endif
 		VERIFY2				(lua(),"Cannot create new Lua thread");
 //		print_stack_		(ai().script_engine().lua());
 //		m_thread_reference	= luaL_ref(ai().script_engine().lua(),LUA_REGISTRYINDEX);

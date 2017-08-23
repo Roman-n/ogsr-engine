@@ -18,9 +18,15 @@
 
 xr_string to_string					(luabind::object const& o)
 {
-	using namespace luabind;
+	using namespace luabind;	
+#if LUABIND_VERSION_NUM < 700
 	if (o.type() == LUA_TSTRING) return object_cast<xr_string>(o);
 	lua_State* L = o.lua_state();
+#else
+	if (type(o) == LUA_TSTRING) return object_cast<xr_string>(o);
+	lua_State* L = e.interpreter();
+#endif
+	
 	LUABIND_CHECK_STACK(L);
 
 #ifdef BOOST_NO_STRINGSTREAM
@@ -28,14 +34,20 @@ xr_string to_string					(luabind::object const& o)
 #else
 	std::stringstream s;
 #endif
-
+#if LUABIND_VERSION_NUM < 700
 	if (o.type() == LUA_TNUMBER)
+#else
+	if (type(o) == LUA_TNUMBER)
+#endif
 	{
 		s << object_cast<float>(o);
 		return xr_string(s.str().c_str());
 	}
-
+#if LUABIND_VERSION_NUM < 700
 	s << "<" << lua_typename(L, o.type()) << ">";
+#else
+	s << "<" << lua_typename(L, type(o)) << ">";
+#endif
 #ifdef BOOST_NO_STRINGSTREAM
 	s << std::ends;
 #endif
@@ -64,12 +76,21 @@ xr_string member_to_string			(luabind::object const& e, LPCSTR function_signatur
 {
 #if !defined(LUABIND_NO_ERROR_CHECKING)
     using namespace luabind;
+#if LUABIND_VERSION_NUM < 700
 	lua_State* L = e.lua_state();
 	LUABIND_CHECK_STACK(L);
 
 	if (e.type() == LUA_TFUNCTION)
 	{
 		e.pushvalue();
+#else
+	lua_State* L = e.interpreter();
+	LUABIND_CHECK_STACK(L);
+
+	if (type(e) == LUA_TFUNCTION)
+	{
+		e.push();
+#endif
 		detail::stack_pop p(L, 1);
 
 		{
@@ -219,9 +240,16 @@ void print_free_functions				(lua_State *L, const luabind::object &object, LPCST
 	luabind::object::iterator	I = object.begin();
 	luabind::object::iterator	E = object.end();
 	for ( ; I != E; ++I) {
+#if LUABIND_VERSION_NUM < 700
 		if ((*I).type() != LUA_TFUNCTION)
 			continue;
 		(*I).pushvalue();
+#else
+		if (luabind::type(*I) != LUA_TFUNCTION)
+			continue;
+		(*I).push();
+#endif
+		
 		luabind::detail::free_functions::function_rep* rep = 0;
 		if (lua_iscfunction(L, -1))
 		{
@@ -254,14 +282,23 @@ void print_free_functions				(lua_State *L, const luabind::object &object, LPCST
 	{
 		xr_string				_indent = indent;
 		_indent.append			("    ");
+#if LUABIND_VERSION_NUM < 700
 		object.pushvalue();
+#else
+		object.push();
+#endif
+		
 		lua_pushnil		(L);
 		while (lua_next(L, -2) != 0) {
 			if (lua_type(L, -1) == LUA_TTABLE) {
 				if (xr_strcmp("_G",lua_tostring(L, -2))) {
 					LPCSTR				S = lua_tostring(L, -2);
 					luabind::object		object(L);
+#if LUABIND_VERSION_NUM < 700
 					object.set			();
+#else
+#pragma todo("set was removed from luabind 0.7")
+#endif
 					if (!xr_strcmp("security",S)) {
 						S = S;
 					}
@@ -287,7 +324,11 @@ void print_help							(lua_State *L)
 	luabind::detail::class_registry::get_registry(L)->iterate_classes(L,&print_class);
 	Msg					("End of list of the classes exported to LUA\n");
 	Msg					("\nList of the namespaces exported to LUA\n");
+#if LUABIND_VERSION_NUM < 700
 	print_free_functions(L,luabind::get_globals(L),"","");
+#else
+	print_free_functions(L, luabind::globals(L), "", "");
+#endif
 	Msg					("End of list of the namespaces exported to LUA\n");
 }
 #else

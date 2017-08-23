@@ -110,11 +110,15 @@ void CScriptStorage::reinit	()
 	if (m_virtual_machine)
 		lua_close			(m_virtual_machine);
 
+#if LUAJIT_VERSION_NUM < 20000
 #ifndef USE_DL_ALLOCATOR
 	m_virtual_machine		= lua_newstate(lua_alloc_xr, NULL);
 #else // USE_DL_ALLOCATOR
 	m_virtual_machine		= lua_newstate(lua_alloc_dl, NULL);
 #endif // USE_DL_ALLOCATOR
+#else
+	m_virtual_machine = luaL_newstate();
+#endif
 
 	if (!m_virtual_machine) {
 		Msg					("! ERROR : Cannot initialize script virtual machine!");
@@ -478,15 +482,25 @@ luabind::object CScriptStorage::name_space(LPCSTR namespace_name)
 	string256			S1;
 	strcpy				(S1,namespace_name);
 	LPSTR				S = S1;
+#if LUABIND_VERSION_NUM < 700
 	luabind::object		lua_namespace = luabind::get_globals(lua());
+#else
+	luabind::object		lua_namespace = luabind::globals(lua());
+#endif
+/*#ifdef OGSE_DEBUG
+	Msg("[CScriptStorage::name_space] : namespace_name : %s", namespace_name);
+#endif*/
 	for (;;) {
 		if (!xr_strlen(S))
 			return		(lua_namespace);
+/*#ifdef OGSE_DEBUG
+		Msg("[CScriptStorage::name_space] : S : %s", S);
+#endif*/
 		LPSTR			I = strchr(S,'.');
 		if (!I)
-			return		(lua_namespace[S]);
+			return		(lua_namespace[(LPCSTR)S]);
 		*I				= 0;
-		lua_namespace	= lua_namespace[S];
+		lua_namespace	= lua_namespace[(LPCSTR)S];
 		S				= I + 1;
 	}
 }
