@@ -150,6 +150,7 @@ CSE_ALifeTraderAbstract::~CSE_ALifeTraderAbstract()
 
 void CSE_ALifeTraderAbstract::STATE_Write	(NET_Packet &tNetPacket)
 {
+	R_ASSERT(tNetPacket.w_tell() < NET_PacketSizeLimit);
 	tNetPacket.w_u32			(m_dwMoney);
 
 #ifdef XRGAME_EXPORTS
@@ -1018,6 +1019,7 @@ void CSE_ALifeCreatureAbstract::STATE_Read	(NET_Packet &tNetPacket, u16 size)
 
 void CSE_ALifeCreatureAbstract::UPDATE_Write(NET_Packet &tNetPacket)
 {
+	R_ASSERT(tNetPacket.w_tell() < NET_PacketSizeLimit);
 	inherited::UPDATE_Write		(tNetPacket);
 	
 	tNetPacket.w_float			(fHealth);
@@ -1227,6 +1229,7 @@ void CSE_ALifeMonsterAbstract::STATE_Read	(NET_Packet &tNetPacket, u16 size)
 
 void CSE_ALifeMonsterAbstract::UPDATE_Write	(NET_Packet &tNetPacket)
 {
+	R_ASSERT(tNetPacket.w_tell() < NET_PacketSizeLimit);
 	inherited1::UPDATE_Write	(tNetPacket);
 	tNetPacket.w				(&m_tNextGraphID,			sizeof(m_tNextGraphID));
 	tNetPacket.w				(&m_tPrevGraphID,			sizeof(m_tPrevGraphID));
@@ -1783,6 +1786,7 @@ void CSE_ALifeHumanAbstract::STATE_Read		(NET_Packet &tNetPacket, u16 size)
 
 void CSE_ALifeHumanAbstract::UPDATE_Write	(NET_Packet &tNetPacket)
 {
+	R_ASSERT(tNetPacket.w_tell() < NET_PacketSizeLimit);
 	inherited1::UPDATE_Write	(tNetPacket);
 	inherited2::UPDATE_Write	(tNetPacket);
 };
@@ -1838,6 +1842,7 @@ void CSE_ALifeHumanStalker::STATE_Read		(NET_Packet &tNetPacket, u16 size)
 
 void CSE_ALifeHumanStalker::UPDATE_Write	(NET_Packet &tNetPacket)
 {
+	R_ASSERT(tNetPacket.w_tell() < NET_PacketSizeLimit);
 	inherited1::UPDATE_Write	(tNetPacket);
 	inherited2::UPDATE_Write	(tNetPacket);
 	tNetPacket.w_stringZ		(m_start_dialog);

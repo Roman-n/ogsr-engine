@@ -21,12 +21,13 @@ void CUIProgressShape::SetPos(float pos){
 	m_stage					= pos;
 }
 
-void CUIProgressShape::SetPos(int pos, int max){
-	m_stage					= float(pos)/float(max);
+void CUIProgressShape::SetPos(int _pos, int max){
+	float m = _max((float)max, EPS);
+	m_stage					= float(_pos)/m;
 	if (m_bText)
 	{
 		string256 _buff;
-		m_pTexture->SetText(itoa(pos,_buff,10));
+		m_pTexture->SetText(itoa(_pos,_buff,10));
 	}
 }
 

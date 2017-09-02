@@ -36,3 +36,5 @@ ipch
 # Мусор WinMerge #
 ##################
 *.bak
+
+1_create_disk_x.cmd

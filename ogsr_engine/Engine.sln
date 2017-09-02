@@ -1,25 +1,16 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{89F6A7EE-3BBE-45D3-A8A8-5D9366CD987B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dedicated", "dedicated", "{3FC858CB-4888-42FF-ABC5-82DAECB59C2C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XR_3DA", "xr_3da\XR_3DA.vcxproj", "{2578C6D8-660D-48AE-9322-7422F8664F06}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B} = {6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrCPU_Pipe", "xrCPU_Pipe\xrCPU_Pipe.vcxproj", "{CA0649DD-D089-423A-981C-46B57A884EB9}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B} = {6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrGame", "xrGame\xrGame.vcxproj", "{200652A6-043E-4634-8837-87983B3BD5E0}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B} = {6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrSound", "xrSound\xrSound.vcxproj", "{CCCA7859-EB86-493E-9B53-C4235F45B3C5}"
 EndProject
@@ -28,9 +19,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrCDB", "xrCDB\xrCDB.vcxproj", "{A19B1DF2-82EC-4364-8BDF-85D13A1C89B5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrRender", "Layers\xrRender_R2\xrRender_R2.vcxproj", "{963BA4E5-499A-454D-B002-1D5ECE0527A6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B} = {6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrXMLParser", "xrXMLParser\xrXMLParser.vcxproj", "{94A1C366-3D19-48E6-8170-4ADC2E70DF98}"
 EndProject
@@ -39,9 +27,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrNetServer", "xrNetServer\xrNetServer.vcxproj", "{435BAC9A-B225-457D-AB40-C9BD0CC8838C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrSE_Factory", "xrSE_Factory\xrSE_Factory.vcxproj", "{3AD26FD3-4F52-4E22-A4CF-AD4C49E74C61}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B} = {6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrCompress", "xrCompress\xrCompress.vcxproj", "{EF76867B-6EB8-4DC0-A1D6-E964FAD6FC7B}"
 EndProject
@@ -65,21 +50,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LWO", "LWO\LWO.vcxproj", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lua", "Lua", "{EF293583-AFED-4761-A72D-04F8BF122434}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Luabind", "Luabind\Luabind.vcxproj", "{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A0F7D1FB-59A7-4717-A7E4-96F37E91998E} = {A0F7D1FB-59A7-4717-A7E4-96F37E91998E}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaXML", "..\3rd_party\Src\LuaXML\LuaXML\LuaXML.vcxproj", "{624E13C3-7E82-4BA5-B2CC-CAE601EEA323}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B} = {6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "compilers", "compilers", "{8752D27E-333F-4DB1-A111-DB3562B5A7F0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sdk dlls", "sdk dlls", "{7B29E7B0-430C-4E5F-861C-4A372E78A157}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrRender_DX11", "Layers\xrRender_R4\xrRender_R4.vcxproj", "{AC9B12ED-A2D7-4337-A981-5BD8430E96D8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Luabind", "luabind\Luabind.vcxproj", "{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -595,27 +574,6 @@ Global
 		{A6EBBBBB-5FEF-4C20-8460-DFAB11734DED}.Release_SDK|x64.Build.0 = Release|x64
 		{A6EBBBBB-5FEF-4C20-8460-DFAB11734DED}.Release|Win32.ActiveCfg = Release|Win32
 		{A6EBBBBB-5FEF-4C20-8460-DFAB11734DED}.Release|x64.ActiveCfg = Release|x64
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug_Dedicated|Win32.ActiveCfg = Debug|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug_Dedicated|Win32.Build.0 = Debug|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug_Dedicated|x64.ActiveCfg = Debug|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug|Win32.ActiveCfg = Debug|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug|Win32.Build.0 = Debug|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug|x64.ActiveCfg = Debug|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed_Dedicated|Win32.ActiveCfg = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed_Dedicated|Win32.Build.0 = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed_Dedicated|x64.ActiveCfg = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed|Win32.ActiveCfg = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed|Win32.Build.0 = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed|x64.ActiveCfg = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_Dedicated|Win32.ActiveCfg = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_Dedicated|Win32.Build.0 = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_Dedicated|x64.ActiveCfg = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_SDK|Win32.ActiveCfg = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_SDK|x64.ActiveCfg = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_SDK|x64.Build.0 = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release|Win32.ActiveCfg = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release|Win32.Build.0 = Release|Win32
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release|x64.ActiveCfg = Release|Win32
 		{624E13C3-7E82-4BA5-B2CC-CAE601EEA323}.Debug_Dedicated|Win32.ActiveCfg = Debug|Win32
 		{624E13C3-7E82-4BA5-B2CC-CAE601EEA323}.Debug_Dedicated|Win32.Build.0 = Debug|Win32
 		{624E13C3-7E82-4BA5-B2CC-CAE601EEA323}.Debug_Dedicated|x64.ActiveCfg = Debug|x64
@@ -661,6 +619,32 @@ Global
 		{AC9B12ED-A2D7-4337-A981-5BD8430E96D8}.Release_SDK|x64.Build.0 = Release|Win32
 		{AC9B12ED-A2D7-4337-A981-5BD8430E96D8}.Release|Win32.ActiveCfg = Release|Win32
 		{AC9B12ED-A2D7-4337-A981-5BD8430E96D8}.Release|x64.ActiveCfg = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug_Dedicated|Win32.ActiveCfg = Debug|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug_Dedicated|Win32.Build.0 = Debug|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug_Dedicated|x64.ActiveCfg = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug_Dedicated|x64.Build.0 = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug|Win32.Build.0 = Debug|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Debug|x64.ActiveCfg = Debug|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed_Dedicated|Win32.ActiveCfg = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed_Dedicated|Win32.Build.0 = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed_Dedicated|x64.ActiveCfg = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed_Dedicated|x64.Build.0 = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed|Win32.ActiveCfg = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed|Win32.Build.0 = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed|x64.ActiveCfg = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Mixed|x64.Build.0 = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_Dedicated|Win32.ActiveCfg = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_Dedicated|Win32.Build.0 = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_Dedicated|x64.ActiveCfg = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_Dedicated|x64.Build.0 = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_SDK|Win32.ActiveCfg = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_SDK|Win32.Build.0 = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_SDK|x64.ActiveCfg = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release_SDK|x64.Build.0 = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release|Win32.ActiveCfg = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release|Win32.Build.0 = Release|Win32
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -676,8 +660,8 @@ Global
 		{65CBB9D0-FBC6-41A4-8316-F5E9B5D7FB33} = {7B29E7B0-430C-4E5F-861C-4A372E78A157}
 		{0899B131-F1D4-4876-9BA1-67AC821DB9E1} = {3FC858CB-4888-42FF-ABC5-82DAECB59C2C}
 		{A6EBBBBB-5FEF-4C20-8460-DFAB11734DED} = {7B29E7B0-430C-4E5F-861C-4A372E78A157}
-		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B} = {EF293583-AFED-4761-A72D-04F8BF122434}
 		{624E13C3-7E82-4BA5-B2CC-CAE601EEA323} = {EF293583-AFED-4761-A72D-04F8BF122434}
+		{6FDBCDB3-D190-486D-BDAC-3C4AC527DA3B} = {EF293583-AFED-4761-A72D-04F8BF122434}
 	EndGlobalSection
 	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}

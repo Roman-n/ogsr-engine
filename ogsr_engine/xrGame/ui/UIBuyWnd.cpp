@@ -977,8 +977,10 @@ bool CUIBuyWnd::CanPutInSlot(CInventoryItem* iitm)
 				iitm->SetSlot(_slot == MP_SLOT_PISTOL ? FIRST_WEAPON_SLOT : SECOND_WEAPON_SLOT);
 				return true;
 			}
+			else
+				return false;
 		else
-			return				m_list[_slot]->ItemsCount() == 0;
+			return				!!(m_list[_slot]->ItemsCount() == 0);
 	}
 	else 
 		return				false;

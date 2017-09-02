@@ -101,9 +101,9 @@ if exist luajit.exe.manifest^
 @del host\buildvm_arch.h
 @del lj_bcdef.h lj_ffdef.h lj_libdef.h lj_recdef.h lj_folddef.h
 @XCOPY lua51.dll "X:\ogsr_package\READY\bin\" /y/i
-@XCOPY lua51.dll "X:\ogsr_package\_BIN\Engine\Release\Win32\" /y/i
-@XCOPY lua51.lib "X:\ogsr_package\_LIB\Engine\Release\Win32\" /y/i
-@XCOPY lua51.exp "X:\ogsr_package\_LIB\Engine\Release\Win32\" /y/i
+@XCOPY lua51.dll "X:\ogsr_engine\_BIN\Engine\Release\Win32\" /y/i
+@XCOPY lua51.lib "X:\ogsr_engine\_LIB\Engine\Release\Win32\" /y/i
+@XCOPY lua51.exp "X:\ogsr_engine\_LIB\Engine\Release\Win32\" /y/i
 @echo.
 @echo === Successfully built LuaJIT for Windows/%LJARCH% ===
 

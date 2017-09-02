@@ -426,9 +426,9 @@ luabind::object Script::lua_namespace_table(CLuaVirtualMachine *tpLuaVM, LPCSTR 
 			return		(lua_namespace);
 		LPSTR			I = strchr(S,'.');
 		if (!I)
-			return		(lua_namespace[S]);
+			return		(lua_namespace[(LPCSTR)S]);
 		*I				= 0;
-		lua_namespace	= lua_namespace[S];
+		lua_namespace	= lua_namespace[(LPCSTR)S];
 		S				= I + 1;
 	}
 }

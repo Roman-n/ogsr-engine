@@ -7,7 +7,11 @@
 using namespace luabind;
 
 CUIGameCustom* get_hud(){
-	return HUD().GetUI()->UIGame();
+	CUI* ui = HUD().GetUI();
+	if (ui)
+		return ui->UIGame();
+	else
+		return NULL;
 }
 
 #pragma optimize("s",on)

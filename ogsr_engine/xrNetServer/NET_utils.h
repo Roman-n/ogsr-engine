@@ -22,8 +22,17 @@ class	NET_Packet
 {
 public:
 
+/*	NET_Packet()
+	{
+		ZeroMemory(B.data, NET_PacketSizeLimit*sizeof(BYTE));
+		B.count = 0;
+		r_pos = 0;
+		timeReceive = 0;
+	}*/
+
     void            construct( const void* data, unsigned size )
                     {
+						R_ASSERT(size < NET_PacketSizeLimit);
                         memcpy( B.data, data, size );
                         B.count = size;
                     }
@@ -43,15 +52,15 @@ public:
 	}
 	IC void	w		( const void* p, u32 count )
 	{
-		VERIFY		(p && count);
-		VERIFY		(B.count + count < NET_PacketSizeLimit);
+		R_ASSERT		(p && count);
+		R_ASSERT(B.count + count < NET_PacketSizeLimit);
 		CopyMemory(&B.data[B.count],p,count);
 		B.count		+= count;
-		VERIFY		(B.count<NET_PacketSizeLimit);
+		R_ASSERT(B.count<NET_PacketSizeLimit);
 	}
 	IC void w_seek	(u32 pos, const void* p, u32 count)	// random write (only inside allocated region)
 	{
-		VERIFY		(p && count && (pos+count<=B.count));
+		R_ASSERT(p && count && (pos+count<=B.count));
 		CopyMemory(&B.data[pos],p,count);
 	}
 	IC u32	w_tell	()	{ return B.count; }
@@ -133,7 +142,7 @@ public:
 	IC void w_chunk_close8		(u32 position)
 	{
 		u32 size			= u32(w_tell() - position) - sizeof(u8);
-		VERIFY				(size<256	);
+		R_ASSERT(size<256	);
 		u8					_size = (u8)size;
 		w_seek				(position,&_size,sizeof(_size));
 	}
@@ -147,7 +156,7 @@ public:
 	IC void w_chunk_close16		(u32 position)
 	{
 		u32 size			= u32(w_tell() - position) - sizeof(u16);
-		VERIFY				(size<65536);
+		R_ASSERT(size<65536);
 		u16					_size = (u16)size;
 		w_seek				(position,&_size,sizeof(_size));
 	}
@@ -166,17 +175,18 @@ public:
 
 	IC void r_seek	(u32 pos)
 	{
-		VERIFY		(pos < B.count);
+		R_ASSERT(pos < B.count);
 		r_pos		= pos;
 	}
 	IC u32		r_tell			()	{ return r_pos; }
 
 	IC void		r				( void* p, u32 count)
 	{
-		VERIFY		(p && count);
+		R_ASSERT(p && count);
+		R_ASSERT(r_pos + count < NET_PacketSizeLimit);
 		CopyMemory(p,&B.data[r_pos],count);
 		r_pos		+= count;
-		VERIFY		(r_pos<=B.count);
+		R_ASSERT(r_pos<=B.count);
 	}
 	IC BOOL		r_eof			()
 	{
@@ -189,7 +199,7 @@ public:
 	IC void		r_advance		(u32 size)
 	{
 		r_pos		+= size;
-		VERIFY		(r_pos<=B.count);
+		R_ASSERT(r_pos<=B.count);
 	}
 
 	// reading - utilities
