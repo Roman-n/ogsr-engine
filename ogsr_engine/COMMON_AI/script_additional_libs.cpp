@@ -188,7 +188,7 @@ int gen_random_in_range(int a1, int a2){	//unsigned?
 	return dist(intgen);
 } 
 
-int math_randomseed(lua_State *L){
+int math_randomseed_mtw(lua_State *L){
 	switch (lua_gettop(L)){
 		case 0:{
 			intgen.seed(ndrng());
@@ -204,7 +204,7 @@ int math_randomseed(lua_State *L){
 	return 0;
 }
 
-int math_random(lua_State *L){
+int math_random_mtw(lua_State *L){
 	switch (lua_gettop(L)){
 		case 0:{
 			lua_pushnumber(L, float_random_01(intgen));
@@ -229,8 +229,8 @@ int math_random(lua_State *L){
 }
 
 const luaL_Reg mathlib[] = {
-	{"random",     math_random},
-	{"randomseed", math_randomseed},
+	{"random_mtw",     math_random_mtw },
+	{"randomseed_mtw", math_randomseed_mtw },
 	{NULL, NULL}
 };
  

@@ -28,7 +28,7 @@
 
 namespace luabind {
 
-	LUABIND_API void LUA_CC open(lua_State* L);
+	LUABIND_API void __cdecl open(lua_State* L);
 
 
 }
