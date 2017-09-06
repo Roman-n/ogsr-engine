@@ -3,6 +3,7 @@
 #include "script_additional_libs.h"
 #include <random>
 
+#if LUAJIT_VERSION_NUM < 20000 // Lua BitOp already built-in with LuaJIT 2.0
 /******************** BIT ********************/
 int ROL(int a, int n){
 	int t1, t2;
@@ -111,6 +112,7 @@ int open_bit(lua_State *L){
 	return 0;
 }
 /******************** BIT END ********************/
+#endif
 
 /******************** STRING ********************/
 int str_trim(lua_State *L){
@@ -317,7 +319,9 @@ int open_table(lua_State *L){
 }
 /******************** TABLE END ********************/
 void open_additional_libs(lua_State *L){
+#if LUAJIT_VERSION_NUM < 20000 // Lua BitOp already built-in with LuaJIT 2.0
 	open_bit(L);
+#endif
 	open_string(L);
 	open_math(L);
 	open_table(L);

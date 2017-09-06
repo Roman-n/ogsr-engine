@@ -124,11 +124,15 @@ void LuaError(lua_State* L)
 // export
 void	CResourceManager::LS_Load			()
 {
-#ifndef USE_DL_ALLOCATOR
-	LSVM			= lua_newstate(lua_alloc_xr, NULL);
-#else // USE_XR_ALLOCAOR
-	LSVM			= lua_newstate(lua_alloc_dl, NULL);
-#endif // USE_XR_ALLOCAOR
+#if LUAJIT_VERSION_NUM < 20000
+	#ifndef USE_DL_ALLOCATOR
+		LSVM = lua_newstate(lua_alloc_xr, NULL);
+	#else // USE_XR_ALLOCAOR
+		LSVM = lua_newstate(lua_alloc_dl, NULL);
+	#endif // USE_XR_ALLOCAOR
+#else
+	LSVM = luaL_newstate();
+#endif
 	if (!LSVM)		{
 		Msg			("! ERROR : Cannot initialize LUA VM!");
 		return;
