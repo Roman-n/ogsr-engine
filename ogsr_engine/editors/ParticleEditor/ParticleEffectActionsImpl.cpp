@@ -128,7 +128,7 @@ void 	EParticleAction::FillProp	(PropItemVec& items, LPCSTR pref, u32 clr)
         	PVector& vect = vectors[o_it->name];
         	switch (vect.type){
             case PVector::vNum: 	
-				V=PHelper().CreateVector	(items,	PrepareKey(pref,name).c_str(), &vect.val, vect.mn, vect.mx, 0.001f, 3);            
+				V=PHelper().CreateVector	(items,	PrepareKey(pref,name).c_str(), &vect.val, vect.mn, vect.mx, 0.001f, 4);            
 			break;
             case PVector::vAngle: 	
 				V=PHelper().CreateAngle3	(items,	PrepareKey(pref,name).c_str(), &vect.val, vect.mn, vect.mx, 0.001f, 3);            
