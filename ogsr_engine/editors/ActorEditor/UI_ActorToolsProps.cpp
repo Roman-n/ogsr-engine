@@ -560,9 +560,9 @@ void CActorTools::FillObjectProperties(PropItemVec& items, LPCSTR pref, ListItem
     PropValue* V=0;
     PHelper().CreateFlag32			(items, "Object\\Flags\\Make Progressive",	&m_pEditObject->m_Flags,		CEditableObject::eoProgressive);
     PHelper().CreateFlag32			(items, "Object\\Flags\\HQ Geometry",	&m_pEditObject->m_Flags,			CEditableObject::eoHQExport);
-    V=PHelper().CreateVector		(items, "Object\\Transform\\Position",		&m_pEditObject->a_vPosition, 	-10000,	10000,0.01,2);
+    V=PHelper().CreateVector		(items, "Object\\Transform\\Position",		&m_pEditObject->a_vPosition, 	-10000,	10000,0.01,4);
     V->OnChangeEvent.bind			(this,&CActorTools::OnChangeTransform);
-    V=PHelper().CreateAngle3		(items, "Object\\Transform\\Rotation",		&m_pEditObject->a_vRotate, 		-10000,	10000,0.1,1);
+    V=PHelper().CreateAngle3		(items, "Object\\Transform\\Rotation",		&m_pEditObject->a_vRotate, 		-10000,	10000,0.01,3);
     V->OnChangeEvent.bind			(this,&CActorTools::OnChangeTransform);
     V=PHelper().CreateCaption		(items, "Object\\Transform\\BBox Min",		shared_str().sprintf("{%3.2f, %3.2f, %3.2f}",VPUSH(m_pEditObject->GetBox().min)));
     V=PHelper().CreateCaption		(items, "Object\\Transform\\BBox Max",		shared_str().sprintf("{%3.2f, %3.2f, %3.2f}",VPUSH(m_pEditObject->GetBox().max)));

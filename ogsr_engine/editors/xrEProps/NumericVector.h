@@ -43,9 +43,9 @@ private:	// User declarations
 	Fvector* reset_value;
 public:		// User declarations
     __fastcall TfrmNumericVector(TComponent* Owner);
-    bool __fastcall Run(const char* title, Fvector* data, int decimal=3, Fvector* reset_value=0, Fvector* min=0, Fvector* max=0, int* X=0, int* Y=0);
+    bool __fastcall Run(const char* title, Fvector* data, int decimal=4, Fvector* reset_value=0, Fvector* min=0, Fvector* max=0, int* X=0, int* Y=0);
 };
 //---------------------------------------------------------------------------
-bool XR_EPROPS_API NumericVectorRun(const char* title, Fvector* data, int decimal=3, Fvector* reset_value=0, Fvector* min=0, Fvector* max=0, int* X=0, int* Y=0);
+bool XR_EPROPS_API NumericVectorRun(const char* title, Fvector* data, int decimal=4, Fvector* reset_value=0, Fvector* min=0, Fvector* max=0, int* X=0, int* Y=0);
 //---------------------------------------------------------------------------
 #endif

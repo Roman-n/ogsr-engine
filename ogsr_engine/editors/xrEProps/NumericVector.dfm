@@ -134,8 +134,8 @@ object frmNumericVector: TfrmNumericVector
     Height = 13
     LWSensitivity = 0.1
     ButtonKind = bkLightWave
-    Decimal = 3
-    Increment = 0.1
+    Decimal = 4
+    Increment = 0.01
     ValueType = vtFloat
     AutoSize = False
     BorderStyle = bsNone
@@ -150,8 +150,8 @@ object frmNumericVector: TfrmNumericVector
     Height = 13
     LWSensitivity = 0.1
     ButtonKind = bkLightWave
-    Decimal = 3
-    Increment = 0.1
+    Decimal = 4
+    Increment = 0.01
     ValueType = vtFloat
     AutoSize = False
     BorderStyle = bsNone
@@ -166,8 +166,8 @@ object frmNumericVector: TfrmNumericVector
     Height = 13
     LWSensitivity = 0.1
     ButtonKind = bkLightWave
-    Decimal = 3
-    Increment = 0.1
+    Decimal = 4
+    Increment = 0.01
     ValueType = vtFloat
     AutoSize = False
     BorderStyle = bsNone
