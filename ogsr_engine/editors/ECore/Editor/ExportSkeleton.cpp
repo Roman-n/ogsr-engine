@@ -724,7 +724,7 @@ bool CExportSkeleton::PrepareGeometry(u8 influence)
      	return false;
     }
 
-    if (m_Source->BoneCount()>64){
+    if (m_Source->BoneCount()>107){
     	ELog.Msg(mtError,"Object cannot handle more than 64 bones.");
      	return false;
     }
